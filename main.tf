@@ -1,12 +1,15 @@
 resource "aws_cloudfront_distribution" "cloudfront_distribution" {
-  enabled             = "${var.enable}"
-  is_ipv6_enabled     = "${var.enable_ipv6}"
   aliases             = "${var.alias}"
-  http_version        = "${var.http_version}"
+  comment             = "${var.comment}"
   default_root_object = "${var.default_root_object}"
+  enabled             = "${var.enable}"
+  http_version        = "${var.http_version}"
+  is_ipv6_enabled     = "${var.enable_ipv6}"
+  price_class         = "${var.price}"
   retain_on_delete    = "${var.retain_on_delete}"
   wait_for_deployment = "${var.wait_for_deployment}"
-
+  web_acl_id          = "${var.webacl}"
+  
   dynamic "origin" {
     for_each = [for i in "${var.dynamic_s3_origin_config}" : {
       name     = i.domain_name
@@ -180,10 +183,6 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
       prefix          = logging_config.value.prefix
     }
   }
-
-  web_acl_id  = "${var.webacl}"
-  price_class = "${var.price}"
-  comment     = "${var.comment}"
 
   tags = {
     Name            = "${var.tag_name}"
