@@ -144,10 +144,9 @@ variable webacl {
 
 terraform {
   backend "s3" {
-    bucket  = "spyderco-east"
-    key     = "terraform/cloudfront/ASVTEST/terraform.tfstate"
+    bucket  = "my-bucket"
+    key     = "cloudfront/terraform.tfstate"
     region  = "us-east-1"
-    profile = "GR_GG_COF_AWS_STSdigital_Dev_Developer"
     encrypt = true
   }
 }
