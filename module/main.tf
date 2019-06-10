@@ -77,11 +77,6 @@ variable price {
   default     = "PriceClass_100"
 }
 
-variable profile {
-  description = "The AWS Profile for Deployment"
-  type        = string
-}
-
 variable region {
   description = "Target AWS region"
   type        = string
@@ -110,30 +105,9 @@ variable ssl_support_method {
   type        = string
 }
 
-variable tag_asv {
-  description = "The tagged ASV name"
-  type        = string
-}
-
-variable tag_cmdb {
-  description = "The tagged CMDB Environment name"
-  type        = string
-}
-
 variable tag_name {
   description = "The tagged name"
   type        = string
-}
-
-variable tag_owner {
-  description = "The tagged owner"
-  type        = string
-}
-
-variable tag_service {
-  description = "The tagged service"
-  type        = string
-  default     = ""
 }
 
 variable webacl {
@@ -152,7 +126,7 @@ terraform {
 }
 
 module spyderco_cf {
-  source                         = "git::https://github.cloud.capitalone.com/Spyderco/tf_aws_cloudfront.git?ref=v1.0.0"
+  source                         = "git::https://github.com/jmgreg31/terraform_aws_cloudfront.git?ref=v1.0.0"
   alias                          = "${var.alias}"
   comment                        = "${var.comment}"
   dynamic_custom_error_response  = "${var.dynamic_custom_error_response}"
@@ -166,15 +140,10 @@ module spyderco_cf {
   dynamic_s3_origin_config       = "${var.dynamic_s3_origin_config}"
   dynamic_origin_group           = "${var.dynamic_origin_group}"
   price                          = "${var.price}"
-  profile                        = "${var.profile}"
   region                         = "${var.region}"
   restriction_type               = "${var.restriction_type}"
   ssl_certificate                = "${var.ssl_certificate}"
   ssl_support_method             = "${var.ssl_support_method}"
-  tag_asv                        = "${var.tag_asv}"
-  tag_cmdb                       = "${var.tag_cmdb}"
   tag_name                       = "${var.tag_name}"
-  tag_owner                      = "${var.tag_owner}"
-  tag_service                    = "${var.tag_service}"
   webacl                         = "${var.webacl}"
 }
