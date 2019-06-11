@@ -1,8 +1,8 @@
-[![Latest Release](https://img.shields.io/badge/release-v1.0.0-blue.svg)](https://github.com/jmgreg31/terraform_aws_cloudfront/releases/tag/v1.0.0)
+[![Latest Release](https://img.shields.io/badge/release-v1.0.0-blue.svg)](https://github.com/jmgreg31/terraform-aws-cloudfront/releases/tag/v1.0.0)
 
 # Terraform Cloudfront Module
 
-This is a module to build a cloudfront distribution.  It has been modularized to accept multiple origins, behaviors, and custom error responses.  Please reference the [Module](https://github.com/jmgreg31/terraform_aws_cloudfront/tree/master/example) folder for an example of this module in action
+This is a module to build a cloudfront distribution.  It has been modularized to accept multiple origins, behaviors, and custom error responses.  Please reference the [Module](https://github.com/jmgreg31/terraform-aws-cloudfront/tree/master/example) folder for an example of this module in action
 
 ## Notes
 
