@@ -44,6 +44,18 @@ variable dynamic_origin_group {
   type = any
 }
 
+variable dynamic_lambda_function_association_default {
+  description = "A config block that triggers a lambda function with specific actions. Defined below, maximum 4.  For Default Cache Behavior block"
+  type = any
+  default = []
+}
+
+variable dynamic_lambda_function_association_ordered {
+  description = "A config block that triggers a lambda function with specific actions. Defined below, maximum 4. For Ordered Cache Behavior block"
+  type = any
+  default = []
+}
+
 variable dynamic_logging_config {
   description = <<EOF
     This is the logging configuration for the Cloudfront Distribution.  It is not required.

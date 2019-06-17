@@ -1,4 +1,4 @@
-[![Latest Release](https://img.shields.io/badge/release-v1.0.0-blue.svg)](https://github.com/jmgreg31/terraform-aws-cloudfront/releases/tag/v1.0.0)
+[![Latest Release](https://img.shields.io/badge/release-v1.1.0-blue.svg)](https://github.com/jmgreg31/terraform-aws-cloudfront/releases/tag/v1.1.0)
 
 # Terraform Cloudfront Module
 
@@ -25,6 +25,9 @@ See [CHANGELOG](CHANGELOG.md) for release notes
 | dynamic\_custom\_origin\_config | Configuration for the custom origin config to be used in dynamic block | any | `[]` | no |
 | dynamic\_default\_cache\_behavior | Default Cache Behviors to be used in dynamic block | any | n/a | yes |
 | dynamic\_ordered\_cache\_behavior | Ordered Cache Behaviors to be used in dynamic block | any | `[]` | no |
+| dynamic\_origin\_group | Origin Group to be used in dynamic block | any | n/a | yes |
+| dynamic\_lambda\_function\_association\_default | A config block that triggers a lambda function with specific actions. Defined below, maximum 4.  For Default Cache Behavior block | any | `[]` | no |
+| dynamic\_lambda\_function\_association\_ordered | A config block that triggers a lambda function with specific actions. Defined below, maximum 4.  For Ordered Cache Behavior block | any | `[]` | no |
 | dynamic\_origin\_group | Origin Group to be used in dynamic block | any | n/a | yes |
 | dynamic\_logging\_config | This is the logging configuration for the Cloudfront Distribution.  It is not required.     If you choose to use this configuration, be sure you have the correct IAM and Bucket ACL     rules.  Your tfvars file should follow this syntax:<br><br>    logging_config = [{     bucket = "<your-bucket>"     include_cookies = <true or false>     prefix = "<your-bucket-prefix>"     }] | any | `[]` | no |
 | dynamic\_s3\_origin\_config | Configuration for the s3 origin config to be used in dynamic block | list(map(string)) | `[]` | no |

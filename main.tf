@@ -111,6 +111,20 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
         }
         headers = default_cache_behavior.value.headers
       }
+
+      dynamic "lambda_function_association" {
+        for_each = [for j in "${var.dynamic_lambda_function_association_default}": {
+          event_type = j.event_type
+          lambda_arn = j.lambda_arn
+          include_body = j.include_body
+        }]
+        content {
+          event_type = lambda_function_association_default.value.event_type
+          lambda_arn = lambda_function_association_default.value.lambda_arn
+          include_body = lambda_function_association_default.value.include_body
+        }
+      }
+
       viewer_protocol_policy = default_cache_behavior.value.viewer_protocol_policy
       min_ttl                = default_cache_behavior.value.min_ttl
       default_ttl            = default_cache_behavior.value.default_ttl
@@ -147,6 +161,20 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
         }
         headers = ordered_cache_behavior.value.headers
       }
+
+      dynamic "lambda_function_association" {
+        for_each = [for j in "${var.dynamic_lambda_function_association_ordered}": {
+          event_type = j.event_type
+          lambda_arn = j.lambda_arn
+          include_body = j.include_body
+        }]
+        content {
+          event_type = lambda_function_association_ordered.value.event_type
+          lambda_arn = lambda_function_association_ordered.value.lambda_arn
+          include_body = lambda_function_association_ordered.value.include_body
+        }
+      }
+
       viewer_protocol_policy = ordered_cache_behavior.value.viewer_protocol_policy
       min_ttl                = ordered_cache_behavior.value.min_ttl
       default_ttl            = ordered_cache_behavior.value.default_ttl
