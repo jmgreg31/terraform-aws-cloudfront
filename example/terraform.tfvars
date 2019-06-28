@@ -32,6 +32,7 @@ dynamic_custom_origin_config = [
   {
     domain_name              = "mydomain.google.com"
     origin_id                = "mydomainorigin.google.com"
+    origin_path              = ""
     http_port                = 80
     https_port               = 443
     origin_keepalive_timeout = 5
@@ -42,6 +43,7 @@ dynamic_custom_origin_config = [
   {
     domain_name              = "mydomain2.google.com"
     origin_id                = "mydomain2origin.google.com"
+    origin_path              = ""
     http_port                = 80
     https_port               = 443
     origin_keepalive_timeout = 5
