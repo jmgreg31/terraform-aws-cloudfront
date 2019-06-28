@@ -32,6 +32,7 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
     for_each = [for i in "${var.dynamic_custom_origin_config}" : {
       name                     = i.domain_name
       id                       = i.origin_id
+      path                     = i.origin_path
       http_port                = i.http_port
       https_port               = i.https_port
       origin_keepalive_timeout = i.origin_keepalive_timeout
@@ -42,6 +43,7 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
     content {
       domain_name = origin.value.name
       origin_id   = origin.value.id
+      origin_path = origin.value.path
       custom_origin_config {
         http_port                = origin.value.http_port
         https_port               = origin.value.https_port
