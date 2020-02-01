@@ -65,7 +65,7 @@ dynamic_origin_group = [
   {
     origin_id    = "OriginGroup-1-S3-cert"
     status_codes = [403, 404, 500, 502, 503, 504]
-    member1      = [
+    member       = [
       {
         origin_id = "S3-cert-east"
       },

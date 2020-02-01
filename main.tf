@@ -81,7 +81,7 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
     for_each = [for i in var.dynamic_origin_group : {
       id           = i.origin_id
       status_codes = i.status_codes
-      member1      = lookup(i, "member", null)
+      member       = lookup(i, "member", null)
     }]
     content {
       origin_id = origin_group.value.id
