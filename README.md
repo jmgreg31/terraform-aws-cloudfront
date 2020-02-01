@@ -1,4 +1,4 @@
-[![Latest Release](https://img.shields.io/badge/release-v2.0.0-blue.svg)](https://github.com/jmgreg31/terraform-aws-cloudfront/releases/tag/v2.0.0)
+[![Latest Release](https://img.shields.io/badge/release-v3.0.0-blue.svg)](https://github.com/jmgreg31/terraform-aws-cloudfront/releases/tag/v3.0.0)
 
 # Terraform Cloudfront Module
 
