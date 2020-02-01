@@ -126,24 +126,24 @@ terraform {
 }
 
 module spyderco_cf {
-  source                         = "git::https://github.com/jmgreg31/terraform_aws_cloudfront.git?ref=v1.0.0"
-  alias                          = "${var.alias}"
-  comment                        = "${var.comment}"
-  dynamic_custom_error_response  = "${var.dynamic_custom_error_response}"
-  dynamic_default_cache_behavior = "${var.dynamic_default_cache_behavior}"
-  enable                         = "${var.enable}"
-  enable_ipv6                    = "${var.enable_ipv6}"
-  http_version                   = "${var.http_version}"
-  minimum_protocol_version       = "${var.minimum_protocol_version}"
-  dynamic_ordered_cache_behavior = "${var.dynamic_ordered_cache_behavior}"
-  dynamic_custom_origin_config   = "${var.dynamic_custom_origin_config}"
-  dynamic_s3_origin_config       = "${var.dynamic_s3_origin_config}"
-  dynamic_origin_group           = "${var.dynamic_origin_group}"
-  price                          = "${var.price}"
-  region                         = "${var.region}"
-  restriction_type               = "${var.restriction_type}"
-  ssl_certificate                = "${var.ssl_certificate}"
-  ssl_support_method             = "${var.ssl_support_method}"
-  tag_name                       = "${var.tag_name}"
-  webacl                         = "${var.webacl}"
+  source                         = "git::https://github.com/jmgreg31/terraform_aws_cloudfront.git?ref=v3.0.0"
+  alias                          = var.alias
+  comment                        = var.comment
+  dynamic_custom_error_response  = var.dynamic_custom_error_response
+  dynamic_default_cache_behavior = var.dynamic_default_cache_behavior
+  enable                         = var.enable
+  enable_ipv6                    = var.enable_ipv6
+  http_version                   = var.http_version
+  minimum_protocol_version       = var.minimum_protocol_version
+  dynamic_ordered_cache_behavior = var.dynamic_ordered_cache_behavior
+  dynamic_custom_origin_config   = var.dynamic_custom_origin_config
+  dynamic_s3_origin_config       = var.dynamic_s3_origin_config
+  dynamic_origin_group           = var.dynamic_origin_group
+  price                          = var.price
+  region                         = var.region
+  restriction_type               = var.restriction_type
+  ssl_certificate                = var.ssl_certificate
+  ssl_support_method             = var.ssl_support_method
+  tag_name                       = var.tag_name
+  webacl                         = var.webacl
 }
