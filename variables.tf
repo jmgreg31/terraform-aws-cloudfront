@@ -1,7 +1,19 @@
+variable acm_certificate_arn {
+  description = "The ARN of the AWS Certificate Manager certificate that you wish to use with this distribution"
+  type        = string
+  default     = null
+}
+
 variable alias {
   description = "Aliases, or CNAMES, for the distribution"
   type        = list
   default     = []
+}
+
+variable cloudfront_default_certificate {
+  description = "If you want viewers to use HTTPS to request your objects and you're using the cloudfront domain name for your distribution"
+  type        = bool
+  default     = true
 }
 
 variable comment {
@@ -86,6 +98,12 @@ variable http_version {
   default     = "http2"
 }
 
+variable iam_certificate_id {
+  description = "Specifies IAM certificate id for CloudFront distribution"
+  type        = string
+  default     = null
+}
+
 variable minimum_protocol_version {
   description = <<EOF
     The minimum version of the SSL protocol that you want CloudFront to use for HTTPS connections. 
@@ -127,11 +145,6 @@ variable retain_on_delete {
   description = "Disables the distribution instead of deleting it when destroying the resource through Terraform. If this is set, the distribution needs to be deleted manually afterwards."
   type        = bool
   default     = false
-}
-
-variable ssl_certificate {
-  description = "Specifies IAM certificate id for CloudFront distribution"
-  type        = string
 }
 
 variable ssl_support_method {

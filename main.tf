@@ -241,8 +241,10 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
   }
 
   viewer_certificate {
-    iam_certificate_id       = var.ssl_certificate
-    minimum_protocol_version = var.minimum_protocol_version
-    ssl_support_method       = var.ssl_support_method
+    acm_certificate_arn            = var.acm_certificate_arn
+    cloudfront_default_certificate = var.cloudfront_default_certificate
+    iam_certificate_id             = var.iam_certificate_id
+    minimum_protocol_version       = var.minimum_protocol_version
+    ssl_support_method             = var.ssl_support_method
   }
 }

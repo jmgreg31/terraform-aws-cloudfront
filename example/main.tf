@@ -1,7 +1,19 @@
+variable acm_certificate_arn {
+  description = "The ARN of the AWS Certificate Manager certificate that you wish to use with this distribution"
+  type        = string
+  default     = null
+}
+
 variable alias {
   description = "Aliases, or CNAMES, for the distribution"
   type        = list
   default     = []
+}
+
+variable cloudfront_default_certificate {
+  description = "If you want viewers to use HTTPS to request your objects and you're using the cloudfront domain name for your distribution"
+  type        = bool
+  default     = true
 }
 
 variable comment {
@@ -58,6 +70,12 @@ variable http_version {
   default     = "http2"
 }
 
+variable iam_certificate_id {
+  description = "Specifies IAM certificate id for CloudFront distribution"
+  type        = string
+  default     = null
+}
+
 variable minimum_protocol_version {
   description = <<EOF
     The minimum version of the SSL protocol that you want CloudFront to use for HTTPS connections. 
@@ -100,11 +118,6 @@ variable ssl_certificate {
   type        = string
 }
 
-variable ssl_support_method {
-  description = "Specifies how you want CloudFront to serve HTTPS requests. One of vip or sni-only."
-  type        = string
-}
-
 variable tag_name {
   description = "The tagged name"
   type        = string
@@ -126,14 +139,17 @@ terraform {
 }
 
 module spyderco_cf {
-  source                         = "git::https://github.com/jmgreg31/terraform_aws_cloudfront.git?ref=v3.0.0"
+  source                         = "git::https://github.com/jmgreg31/terraform_aws_cloudfront.git?ref=v4.0.0"
+  acm_certificate_arn            = var.acm_certificate_arn
   alias                          = var.alias
+  cloudfront_default_certificate = var.cloudfront_default_certificate
   comment                        = var.comment
   dynamic_custom_error_response  = var.dynamic_custom_error_response
   dynamic_default_cache_behavior = var.dynamic_default_cache_behavior
   enable                         = var.enable
   enable_ipv6                    = var.enable_ipv6
   http_version                   = var.http_version
+  iam_certificate_id             = var.iam_certificate_id
   minimum_protocol_version       = var.minimum_protocol_version
   dynamic_ordered_cache_behavior = var.dynamic_ordered_cache_behavior
   dynamic_custom_origin_config   = var.dynamic_custom_origin_config
@@ -142,7 +158,6 @@ module spyderco_cf {
   price                          = var.price
   region                         = var.region
   restriction_type               = var.restriction_type
-  ssl_certificate                = var.ssl_certificate
   ssl_support_method             = var.ssl_support_method
   tag_name                       = var.tag_name
   webacl                         = var.webacl
