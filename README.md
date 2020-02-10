@@ -1,4 +1,4 @@
-[![Latest Release](https://img.shields.io/badge/release-v3.0.0-blue.svg)](https://github.com/jmgreg31/terraform-aws-cloudfront/releases/tag/v3.0.0)
+[![Latest Release](https://img.shields.io/badge/release-v4.0.0-blue.svg)](https://github.com/jmgreg31/terraform-aws-cloudfront/releases/tag/v4.0.0)
 
 # Terraform Cloudfront Module
 
@@ -18,8 +18,10 @@ See [CHANGELOG](CHANGELOG.md) for release notes
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
+| acm\_certificate\_arn | The ARN of the AWS Certificate Manager certificate that you wish to use with this distribution | string | `null` | no |
 | alias | Aliases, or CNAMES, for the distribution | list | `[]` | no |
 | comment | Any comment about the CloudFront Distribution | string | `""` | no |
+| cloudfront\_default\_certificate | If you want viewers to use HTTPS to request your objects and you're using the cloudfront domain name for your distribution | bool | `true` | no |
 | default\_root\_object | The object that you want CloudFront to return (for example, index.html) when an end user requests the root URL | string | `""` | no |
 | dynamic\_custom\_error\_response | Custom error response to be used in dynamic block | any | `[]` | yes |
 | dynamic\_custom\_origin\_config | Configuration for the custom origin config to be used in dynamic block | any | `[]` | no |
@@ -31,13 +33,13 @@ See [CHANGELOG](CHANGELOG.md) for release notes
 | enable | Whether the distribution is enabled to accept end user requests for content | bool | `true` | no |
 | enable\_ipv6 | Whether the IPv6 is enabled for the distribution | bool | `true` | no |
 | http\_version | The maximum HTTP version to support on the distribution. Allowed values are http1.1 and http2 | string | `"http2"` | no |
+| iam\_certificate\_id | Specifies IAM certificate id for CloudFront distribution | string | `null` | no |
 | minimum\_protocol\_version | The minimum version of the SSL protocol that you want CloudFront to use for HTTPS connections.      One of SSLv3, TLSv1, TLSv1_2016, TLSv1.1_2016 or TLSv1.2_2018. Default: TLSv1.      NOTE: If you are using a custom certificate (specified with acm_certificate_arn or iam_certificate_id),      and have specified sni-only in ssl_support_method, TLSv1 or later must be specified.      If you have specified vip in ssl_support_method, only SSLv3 or TLSv1 can be specified.      If you have specified cloudfront_default_certificate, TLSv1 must be specified. | string | n/a | yes |
 | price | The price class of the CloudFront Distribution.  Valid types are PriceClass_All, PriceClass_100, PriceClass_200 | string | `"PriceClass_100"` | no |
 | region | Target AWS region | string | `"us-east-1"` | no |
 | restriction\_location | The ISO 3166-1-alpha-2 codes for which you want CloudFront either to distribute your content (whitelist) or not distribute your content (blacklist) | list | `[]` | no |
 | restriction\_type | The restriction type of your CloudFront distribution geolocation restriction. Options include none, whitelist, blacklist | string | `"none"` | no |
 | retain\_on\_delete | Disables the distribution instead of deleting it when destroying the resource through Terraform. If this is set, the distribution needs to be deleted manually afterwards. | bool | `false` | no |
-| ssl\_certificate | Specifies IAM certificate id for CloudFront distribution | string | n/a | yes |
 | ssl\_support\_method | Specifies how you want CloudFront to serve HTTPS requests. One of vip or sni-only. | string | n/a | yes |
 | tag\_name | The tagged name | string | n/a | no |
 | wait\_for\_deployment | If enabled, the resource will wait for the distribution status to change from InProgress to Deployed. Setting this tofalse will skip the process. | bool | `true` | no |

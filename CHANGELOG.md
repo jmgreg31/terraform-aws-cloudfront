@@ -1,3 +1,8 @@
+## v4.0.0 (February 2020)
+* Update the `viewer_certificate` block to include `acme_certificate_arn` and `cloudfront_default_certificate`
+* Update the name of `ssl_certificate` to `iam_certificate_id` to align with the resource
+* Made `iam_certificate_id` optional
+
 ## v3.0.0 (February 2020)
 * Update to Terraform version 12 syntax
 * Add `custom_header` to both `dynamic_custom_origin_config` and `dynamic_s3_origin_config`
