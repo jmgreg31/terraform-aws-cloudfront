@@ -33,7 +33,7 @@ See [CHANGELOG](CHANGELOG.md) for release notes
 | enable | Whether the distribution is enabled to accept end user requests for content | bool | `true` | no |
 | enable\_ipv6 | Whether the IPv6 is enabled for the distribution | bool | `true` | no |
 | http\_version | The maximum HTTP version to support on the distribution. Allowed values are http1.1 and http2 | string | `"http2"` | no |
-| iam\_certificate\_id | Specifies IAM certificate id for CloudFront distribution | string | n/a | yes |
+| iam\_certificate\_id | Specifies IAM certificate id for CloudFront distribution | string | `null` | no |
 | minimum\_protocol\_version | The minimum version of the SSL protocol that you want CloudFront to use for HTTPS connections.      One of SSLv3, TLSv1, TLSv1_2016, TLSv1.1_2016 or TLSv1.2_2018. Default: TLSv1.      NOTE: If you are using a custom certificate (specified with acm_certificate_arn or iam_certificate_id),      and have specified sni-only in ssl_support_method, TLSv1 or later must be specified.      If you have specified vip in ssl_support_method, only SSLv3 or TLSv1 can be specified.      If you have specified cloudfront_default_certificate, TLSv1 must be specified. | string | n/a | yes |
 | price | The price class of the CloudFront Distribution.  Valid types are PriceClass_All, PriceClass_100, PriceClass_200 | string | `"PriceClass_100"` | no |
 | region | Target AWS region | string | `"us-east-1"` | no |
