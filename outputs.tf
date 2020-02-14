@@ -28,6 +28,11 @@ output "domain_name" {
   description = "The domain name corresponding to the distribution. For example: d604721fxaaqy9.cloudfront.net."
 }
 
+output "name" {
+  value       = aws_cloudfront_distribution.cloudfront_distribution.domain_name
+  description = "The domain name corresponding to the distribution. For example: d604721fxaaqy9.cloudfront.net."
+}
+
 output "last_modified_time" {
   value       = aws_cloudfront_distribution.cloudfront_distribution.last_modified_time
   description = "The date and time the distribution was last modified."

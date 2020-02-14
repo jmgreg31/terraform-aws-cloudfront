@@ -55,6 +55,7 @@ See [CHANGELOG](CHANGELOG.md) for release notes
 | status | The current status of the distribution. Deployed if the distribution's information is fully propagated throughout the Amazon CloudFront system. |
 | active_trusted_signers | The key pair IDs that CloudFront is aware of for each trusted signer, if the distribution is set up to serve private content with signed URLs. |
 | domain_name | The domain name corresponding to the distribution. For example: d604721fxaaqy9.cloudfront.net. |
+| name | The domain name corresponding to the distribution. For example: d604721fxaaqy9.cloudfront.net. |
 | last_modified_time | The date and time the distribution was last modified. |
 | in_progress_validation_batches | The number of invalidation batches currently in progress. |
 | etag | The current version of the distribution's information. For example: E2QWRUHAPOMQZL. |
