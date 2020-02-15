@@ -10,5 +10,5 @@ script:
   - ./terraform plan
 
 after_success:
-- test $TRAVIS_BRANCH = "feature/testing" &&
+- test $TRAVIS_BRANCH = "master" &&
   python bump.py
