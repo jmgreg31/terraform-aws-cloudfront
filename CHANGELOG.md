@@ -1,4 +1,4 @@
-## UNRELEASED (February 2020)
+## v4.1.1 (February 2020)
 * Adding in the ability to Test
 * Adding ability to bump version
 * Files created: `CONTRIBUTING.md` `VERSION` `bump.py` `.travis.yml`
