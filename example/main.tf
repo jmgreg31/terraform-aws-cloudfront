@@ -24,32 +24,32 @@ variable comment {
 
 variable dynamic_custom_error_response {
   description = "Custom error response to be used in dynamic block"
-  type = any
+  type        = any
 }
 
 variable dynamic_custom_origin_config {
   description = "Configuration for the custom origin config to be used in dynamic block"
-  type = any
+  type        = any
 }
 
 variable dynamic_default_cache_behavior {
   description = "Default Cache Behviors to be used in dynamic block"
-  type = any
+  type        = any
 }
 
 variable dynamic_ordered_cache_behavior {
   description = "Ordered Cache Behaviors to be used in dynamic block"
-  type = any
+  type        = any
 }
 
 variable dynamic_origin_group {
   description = "Origin Group to be used in dynamic block"
-  type = any
+  type        = any
 }
 
 variable dynamic_s3_origin_config {
   description = "Configuration for the s3 origin config to be used in dynamic block"
-  type = list(map(string))
+  type        = list(map(string))
 }
 
 variable enable {
@@ -139,7 +139,7 @@ terraform {
 }
 
 module demo_cf {
-  source                         = "git::https://github.com/jmgreg31/terraform_aws_cloudfront.git?ref=v4.1.0"
+  source                         = "git::https://github.com/jmgreg31/terraform_aws_cloudfront.git?ref=feature/testing"
   acm_certificate_arn            = var.acm_certificate_arn
   alias                          = var.alias
   cloudfront_default_certificate = var.cloudfront_default_certificate

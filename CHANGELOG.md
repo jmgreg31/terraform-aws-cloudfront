@@ -1,3 +1,8 @@
+## UNRELEASED (February 2020)
+* Adding in the ability to Test
+* Adding ability to bump version
+* Files created: `CONTRIBUTING.md` `VERSION` `bump.py` `.travis.yml`
+
 ## v4.1.0 (February 2020)
 * Add all CloudFront outputs
 * Made `s3_origin_config` dynamic and `origin_access_identity` optional
