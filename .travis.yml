@@ -10,5 +10,5 @@ script:
   - ./terraform plan
 
 after_success:
-- test $TRAVIS_BRANCH = "master" && test TRAVIS_PULL_REQUEST = "false" &&
+- test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" &&
   python bump.py
