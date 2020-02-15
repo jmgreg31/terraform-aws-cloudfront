@@ -40,8 +40,7 @@ def updateGit():
                git config --global user.name "Travis CI"')
     os.system('git add ../README.md ../CHANGELOG.md main.tf terraform.tfvars')
     os.system('git commit -m "Bump Version to {} [skip ci]"'.format(bumpversion))
-    os.system('git show-ref')
-    # os.system('git push origin feature/testing')
+    os.system('git push origin master --quiet')
 
 if __name__ == '__main__':
     updateREADME()
