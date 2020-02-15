@@ -1,6 +1,6 @@
 import re
 
-with open ('../VERION','r') as version:
+with open ('../VERSION','r') as version:
     for line in version:
         bumpversion=line
 
