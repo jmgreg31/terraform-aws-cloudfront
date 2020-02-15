@@ -32,13 +32,16 @@ def updateMaintf():
     data=getData('main.tf',r'source[ \t]+\=.*',replacement)
     with open ('main.tf', 'w') as newfile:
         newfile.write(data)
-    os.system('terraform fmt')
+    os.system('./terraform fmt')
 
 def updateGit():
     bumpversion = getVersion()
+    os.system('git config --global user.email \"travis@travis-ci.org\" && \
+               git config --global user.name "Travis CI"')
+    os.system('git checkout master')
     os.system('git add --all')
-    os.system('git commit -m "Bump Version to {} [skip ci]'.format(bumpversion))
-    os.system('git push')
+    os.system('git commit -m "Bump Version to {} [skip ci]"'.format(bumpversion))
+    # os.system('git push')
 
 if __name__ == '__main__':
     updateREADME()
