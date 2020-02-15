@@ -113,6 +113,11 @@ variable restriction_type {
   default     = "none"
 }
 
+variable ssl_support_method {
+  description = "Specifies how you want CloudFront to serve HTTPS requests. One of vip or sni-only."
+  type        = string
+}
+
 variable tag_name {
   description = "The tagged name"
   type        = string
