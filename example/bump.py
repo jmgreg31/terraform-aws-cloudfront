@@ -38,7 +38,7 @@ def updateGit():
     bumpversion = getVersion()
     os.system('git config --global user.email \"travis@travis-ci.org\" && \
                git config --global user.name "Travis CI"')
-    os.system('git add README.md CHANGELOG.md example/main.tf example/terraform.tfvars')
+    os.system('git add ../README.md ../CHANGELOG.md main.tf terraform.tfvars')
     os.system('git commit -m "Bump Version to {} [skip ci]"'.format(bumpversion))
     # os.system('git push')
 
