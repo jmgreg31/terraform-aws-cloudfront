@@ -138,7 +138,7 @@ terraform {
   }
 }
 
-module spyderco_cf {
+module demo_cf {
   source                         = "git::https://github.com/jmgreg31/terraform_aws_cloudfront.git?ref=v4.1.0"
   acm_certificate_arn            = var.acm_certificate_arn
   alias                          = var.alias
