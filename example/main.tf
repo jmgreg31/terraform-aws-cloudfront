@@ -113,8 +113,8 @@ variable restriction_type {
   default     = "none"
 }
 
-variable ssl_certificate {
-  description = "Specifies IAM certificate id for CloudFront distribution"
+variable ssl_support_method {
+  description = "Specifies how you want CloudFront to serve HTTPS requests. One of vip or sni-only."
   type        = string
 }
 
@@ -131,7 +131,7 @@ variable webacl {
 
 terraform {
   backend "s3" {
-    bucket  = "my-bucket"
+    bucket  = "jmgreg31"
     key     = "cloudfront/terraform.tfstate"
     region  = "us-east-1"
     encrypt = true

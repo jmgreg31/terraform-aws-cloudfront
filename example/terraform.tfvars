@@ -5,7 +5,6 @@ enable_ipv6              = true
 http_version             = "http1.1"
 minimum_protocol_version = "TLSv1.1_2016"
 price                    = "PriceClass_100"
-profile                  = "Example_Profile"
 region                   = "us-east-1"
 restriction_type         = "none"
 iam_certificate_id       = "sslcert"
