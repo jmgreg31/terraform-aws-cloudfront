@@ -42,7 +42,7 @@ def updateGit():
     os.system('git commit -m "Bump Version to {} [skip ci]"'.format(bumpversion))
     os.system('git remote rm origin')
     os.system('git remote add origin https://jmgreg31:${GH_TOKEN}@github.com/jmgreg31/terraform-aws-cloudfront.git > /dev/null 2>&1')
-    os.system('git push origin master --quiet')
+    os.system('git push origin master')
 
 if __name__ == '__main__':
     updateREADME()
