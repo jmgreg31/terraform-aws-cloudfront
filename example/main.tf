@@ -113,11 +113,6 @@ variable restriction_type {
   default     = "none"
 }
 
-variable ssl_certificate {
-  description = "Specifies IAM certificate id for CloudFront distribution"
-  type        = string
-}
-
 variable tag_name {
   description = "The tagged name"
   type        = string
@@ -131,7 +126,7 @@ variable webacl {
 
 terraform {
   backend "s3" {
-    bucket  = "my-bucket"
+    bucket  = "jmgreg31"
     key     = "cloudfront/terraform.tfstate"
     region  = "us-east-1"
     encrypt = true
