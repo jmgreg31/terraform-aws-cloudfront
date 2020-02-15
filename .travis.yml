@@ -8,3 +8,7 @@ before_install:
 script:
   - ./terraform init
   - ./terraform plan
+
+after_success:
+- test $TRAVIS_BRANCH = "feature/testing" &&
+  python bump.py
