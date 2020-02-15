@@ -14,7 +14,7 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
     for_each = [for i in var.dynamic_s3_origin_config : {
       name          = i.domain_name
       id            = i.origin_id
-      identity      = i.origin_access_identity
+      identity      = lookup(i, "origin_access_identity", null)
       path          = lookup(i, "origin_path", null)
       custom_header = lookup(i, "custom_header", null)
     }]
@@ -33,8 +33,11 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
           value = custom_header.value.value
         }
       }
-      s3_origin_config {
-        origin_access_identity = origin.value.identity
+      dynamic "s3_origin_config" {
+        for_each = origin.value.identity == null ? [] : [origin.value.identity]
+        content {
+          origin_access_identity = s3_origin_config.value
+        }
       }
     }
   }

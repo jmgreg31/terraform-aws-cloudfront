@@ -1,3 +1,7 @@
+## v4.1.0 (February 2020)
+* Add all CloudFront outputs
+* Made `s3_origin_config` dynamic and `origin_access_identity` optional
+
 ## v4.0.0 (February 2020)
 * Update the `viewer_certificate` block to include `acme_certificate_arn` and `cloudfront_default_certificate`
 * Update the name of `ssl_certificate` to `iam_certificate_id` to align with the resource
