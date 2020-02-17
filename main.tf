@@ -1,4 +1,5 @@
 resource "aws_cloudfront_distribution" "cloudfront_distribution" {
+  count               = var.create_cf ? 1 : 0
   aliases             = var.alias
   comment             = var.comment
   default_root_object = var.default_root_object
@@ -103,102 +104,71 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
   }
 
   dynamic "default_cache_behavior" {
-    for_each = [for i in var.dynamic_default_cache_behavior : {
-      allowed_methods             = i.allowed_methods
-      cached_methods              = i.cached_methods
-      target_origin_id            = i.target_origin_id
-      compress                    = i.compress
-      query_string                = i.query_string
-      cookies_forward             = i.cookies_forward
-      headers                     = i.headers
-      viewer_protocol_policy      = i.viewer_protocol_policy
-      min_ttl                     = i.min_ttl
-      default_ttl                 = i.default_ttl
-      max_ttl                     = i.max_ttl
-      lambda_function_association = lookup(i, "lambda_function_association", null)
-    }]
+    for_each = var.dynamic_default_cache_behavior[*]
+
     content {
       allowed_methods  = default_cache_behavior.value.allowed_methods
       cached_methods   = default_cache_behavior.value.cached_methods
       target_origin_id = default_cache_behavior.value.target_origin_id
-      compress         = default_cache_behavior.value.compress
+      compress         = lookup(default_cache_behavior.value, "compress", null)
 
       forwarded_values {
         query_string = default_cache_behavior.value.query_string
         cookies {
           forward = default_cache_behavior.value.cookies_forward
         }
-        headers = default_cache_behavior.value.headers
+        headers = lookup(default_cache_behavior.value, "headers", null)
       }
 
       dynamic "lambda_function_association" {
-        for_each = default_cache_behavior.value.lambda_function_association == null ? [] : [for i in default_cache_behavior.value.lambda_function_association : {
-          event_type   = i.event_type
-          lambda_arn   = i.lambda_arn
-          include_body = i.include_body
-        }]
+        iterator = lambda
+        for_each = lookup(default_cache_behavior.value, "lambda_function_association", [])
         content {
-          event_type   = lambda_function_association.value.event_type
-          lambda_arn   = lambda_function_association.value.lambda_arn
-          include_body = lambda_function_association.value.include_body
+          event_type   = lambda.value.event_type
+          lambda_arn   = lambda.value.lambda_arn
+          include_body = lookup(lambda.value, "include_body", null)
         }
       }
 
       viewer_protocol_policy = default_cache_behavior.value.viewer_protocol_policy
-      min_ttl                = default_cache_behavior.value.min_ttl
-      default_ttl            = default_cache_behavior.value.default_ttl
-      max_ttl                = default_cache_behavior.value.max_ttl
+      min_ttl                = lookup(default_cache_behavior.value, "min_ttl", null)
+      default_ttl            = lookup(default_cache_behavior.value, "default_ttl", null)
+      max_ttl                = lookup(default_cache_behavior.value, "max_ttl", null)
     }
   }
 
   dynamic "ordered_cache_behavior" {
-    for_each = [for i in var.dynamic_ordered_cache_behavior : {
-      path_pattern                = i.path_pattern
-      allowed_methods             = i.allowed_methods
-      cached_methods              = i.cached_methods
-      target_origin_id            = i.target_origin_id
-      compress                    = i.compress
-      query_string                = i.query_string
-      cookies_forward             = i.cookies_forward
-      headers                     = i.headers
-      viewer_protocol_policy      = i.viewer_protocol_policy
-      min_ttl                     = i.min_ttl
-      default_ttl                 = i.default_ttl
-      max_ttl                     = i.max_ttl
-      lambda_function_association = lookup(i, "lambda_function_association", null)
-    }]
+    for_each = var.dynamic_ordered_cache_behavior
+    iterator = cache_behavior
     content {
-      path_pattern     = ordered_cache_behavior.value.path_pattern
-      allowed_methods  = ordered_cache_behavior.value.allowed_methods
-      cached_methods   = ordered_cache_behavior.value.cached_methods
-      target_origin_id = ordered_cache_behavior.value.target_origin_id
-      compress         = ordered_cache_behavior.value.compress
+      path_pattern     = cache_behavior.value.path_pattern
+      allowed_methods  = cache_behavior.value.allowed_methods
+      cached_methods   = cache_behavior.value.cached_methods
+      target_origin_id = cache_behavior.value.target_origin_id
+      compress         = lookup(cache_behavior.value, "compress", null)
 
       forwarded_values {
-        query_string = ordered_cache_behavior.value.query_string
+        query_string = cache_behavior.value.query_string
         cookies {
-          forward = ordered_cache_behavior.value.cookies_forward
+          forward = cache_behavior.value.cookies_forward
         }
-        headers = ordered_cache_behavior.value.headers
+        headers = lookup(cache_behavior.value, "headers", null)
       }
 
       dynamic "lambda_function_association" {
-        for_each = ordered_cache_behavior.value.lambda_function_association == null ? [] : [for i in ordered_cache_behavior.value.lambda_function_association : {
-          event_type   = i.event_type
-          lambda_arn   = i.lambda_arn
-          include_body = i.include_body
-        }]
+        iterator = lambda
+        for_each = lookup(cache_behavior.value, "lambda_function_association", [])
         content {
-          event_type   = lambda_function_association.value.event_type
-          lambda_arn   = lambda_function_association.value.lambda_arn
-          include_body = lambda_function_association.value.include_body
+          event_type   = lambda.value.event_type
+          lambda_arn   = lambda.value.lambda_arn
+          include_body = lookup(lambda.value, "include_body", null)
         }
       }
 
-      viewer_protocol_policy = ordered_cache_behavior.value.viewer_protocol_policy
-      min_ttl                = ordered_cache_behavior.value.min_ttl
-      default_ttl            = ordered_cache_behavior.value.default_ttl
-      max_ttl                = ordered_cache_behavior.value.max_ttl
+      viewer_protocol_policy = cache_behavior.value.viewer_protocol_policy
+      min_ttl                = lookup(cache_behavior.value, "min_ttl", null)
+      default_ttl            = lookup(cache_behavior.value, "default_ttl", null)
+      max_ttl                = lookup(cache_behavior.value, "max_ttl", null)
     }
   }
 
@@ -219,22 +189,18 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
   }
 
   dynamic "logging_config" {
-    for_each = [for i in var.dynamic_logging_config : {
-      bucket          = i.bucket
-      include_cookies = i.include_cookies
-      prefix          = i.prefix
-    }]
+    for_each = var.dynamic_logging_config[*]
 
     content {
       bucket          = logging_config.value.bucket
-      include_cookies = logging_config.value.include_cookies
-      prefix          = logging_config.value.prefix
+      include_cookies = lookup(logging_config.value, "include_cookies", null)
+      prefix          = lookup(logging_config.value, "prefix", null)
     }
   }
 
-  tags = {
-    Name = var.tag_name
-  }
+  tags = merge(
+    var.additional_tags,
+  { Name = var.tag_name })
 
   restrictions {
     geo_restriction {

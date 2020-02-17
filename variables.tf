@@ -1,3 +1,9 @@
+variable create_cf {
+  description = "Set to false to prevent the module from creating any resources"
+  type        = bool
+  default     = true
+}
+
 variable acm_certificate_arn {
   description = "The ARN of the AWS Certificate Manager certificate that you wish to use with this distribution"
   type        = string
@@ -30,30 +36,31 @@ variable default_root_object {
 
 variable dynamic_custom_error_response {
   description = "Custom error response to be used in dynamic block"
-  type = any
-  default = []
+  type        = any
+  default     = []
 }
 
 variable dynamic_custom_origin_config {
   description = "Configuration for the custom origin config to be used in dynamic block"
-  type = any
-  default = []
+  type        = any
+  default     = []
 }
 
 variable dynamic_default_cache_behavior {
   description = "Default Cache Behviors to be used in dynamic block"
-  type = any
+  type        = any
 }
 
 variable dynamic_ordered_cache_behavior {
   description = "Ordered Cache Behaviors to be used in dynamic block"
-  type = any
-  default = []
+  type        = any
+  default     = []
 }
 
 variable dynamic_origin_group {
   description = "Origin Group to be used in dynamic block"
-  type = any
+  type        = any
+  default     = []
 }
 
 variable dynamic_logging_config {
@@ -76,8 +83,8 @@ variable dynamic_logging_config {
 
 variable dynamic_s3_origin_config {
   description = "Configuration for the s3 origin config to be used in dynamic block"
-  type = list(map(string))
-  default = []
+  type        = list(map(string))
+  default     = []
 }
 
 variable enable {
@@ -156,6 +163,12 @@ variable tag_name {
   description = "The tagged name"
   type        = string
   default     = ""
+}
+
+variable additional_tags {
+  description = "A mapping of additional tags to attach"
+  type        = map(string)
+  default     = {}
 }
 
 variable wait_for_deployment {

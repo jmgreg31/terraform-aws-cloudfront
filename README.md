@@ -21,14 +21,16 @@ See [CHANGELOG](CHANGELOG.md) for release notes
 |------|-------------|:----:|:-----:|:-----:|
 | acm\_certificate\_arn | The ARN of the AWS Certificate Manager certificate that you wish to use with this distribution | string | `null` | no |
 | alias | Aliases, or CNAMES, for the distribution | list | `[]` | no |
+| additional_tags | A mapping of additional tags to attach | map(string) | `{}` | no |
 | comment | Any comment about the CloudFront Distribution | string | `""` | no |
 | cloudfront\_default\_certificate | If you want viewers to use HTTPS to request your objects and you're using the cloudfront domain name for your distribution | bool | `true` | no |
+| create_cf | Set to false to prevent the module from creating any resources | bool | `true` | no |
 | default\_root\_object | The object that you want CloudFront to return (for example, index.html) when an end user requests the root URL | string | `""` | no |
-| dynamic\_custom\_error\_response | Custom error response to be used in dynamic block | any | `[]` | yes |
+| dynamic\_custom\_error\_response | Custom error response to be used in dynamic block | any | `[]` | no |
 | dynamic\_custom\_origin\_config | Configuration for the custom origin config to be used in dynamic block | any | `[]` | no |
 | dynamic\_default\_cache\_behavior | Default Cache Behviors to be used in dynamic block | any | n/a | yes |
 | dynamic\_ordered\_cache\_behavior | Ordered Cache Behaviors to be used in dynamic block | any | `[]` | no |
-| dynamic\_origin\_group | Origin Group to be used in dynamic block | any | n/a | yes |
+| dynamic\_origin\_group | Origin Group to be used in dynamic block | any | `[]` | no |
 | dynamic\_logging\_config | This is the logging configuration for the Cloudfront Distribution.  It is not required.     If you choose to use this configuration, be sure you have the correct IAM and Bucket ACL     rules.  Your tfvars file should follow this syntax:<br><br>    logging_config = [{     bucket = "<your-bucket>"     include_cookies = <true or false>     prefix = "<your-bucket-prefix>"     }] | any | `[]` | no |
 | dynamic\_s3\_origin\_config | Configuration for the s3 origin config to be used in dynamic block | list(map(string)) | `[]` | no |
 | enable | Whether the distribution is enabled to accept end user requests for content | bool | `true` | no |
