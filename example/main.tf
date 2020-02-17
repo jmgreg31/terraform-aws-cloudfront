@@ -1,3 +1,9 @@
+variable create_cf {
+  description = "Set to false to prevent the module from creating any resources"
+  type        = bool
+  default     = true
+}
+
 variable acm_certificate_arn {
   description = "The ARN of the AWS Certificate Manager certificate that you wish to use with this distribution"
   type        = string
@@ -138,8 +144,14 @@ terraform {
   }
 }
 
+provider "aws" {
+  version = ">= 2.28.0"
+  region  = var.region
+}
+
 module demo_cf {
   source                         = "git::https://github.com/jmgreg31/terraform-aws-cloudfront.git?ref=staging"
+  create_cf                      = var.create_cf
   acm_certificate_arn            = var.acm_certificate_arn
   alias                          = var.alias
   cloudfront_default_certificate = var.cloudfront_default_certificate
