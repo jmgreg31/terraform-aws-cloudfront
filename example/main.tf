@@ -168,6 +168,7 @@ module demo_cf {
   dynamic_s3_origin_config       = var.dynamic_s3_origin_config
   dynamic_origin_group           = var.dynamic_origin_group
   price                          = var.price
+  region                         = var.region
   restriction_type               = var.restriction_type
   ssl_support_method             = var.ssl_support_method
   tag_name                       = var.tag_name
