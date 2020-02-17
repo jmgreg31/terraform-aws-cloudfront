@@ -28,7 +28,7 @@ def updateCHANGELOG():
 
 def updateMaintf():
     bumpversion = getVersion()
-    replacement = "source = " + "\"git::https://github.com/jmgreg31/terraform_aws_cloudfront.git?ref={}\"".format(bumpversion)
+    replacement = "source = " + "\"git::https://github.com/jmgreg31/terraform-aws-cloudfront.git?ref={}\"".format(bumpversion)
     data=getData('main.tf',r'source[ \t]+\=.*',replacement)
     with open ('main.tf', 'w') as newfile:
         newfile.write(data)
