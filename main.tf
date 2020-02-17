@@ -166,9 +166,9 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
       }
 
       viewer_protocol_policy = cache_behavior.value.viewer_protocol_policy
-      min_ttl                = lookup(default_cache_behavior.value, "min_ttl", null)
-      default_ttl            = lookup(default_cache_behavior.value, "default_ttl", null)
-      max_ttl                = lookup(default_cache_behavior.value, "max_ttl", null)
+      min_ttl                = lookup(cache_behavior.value, "min_ttl", null)
+      default_ttl            = lookup(cache_behavior.value, "default_ttl", null)
+      max_ttl                = lookup(cache_behavior.value, "max_ttl", null)
     }
   }
 
