@@ -39,7 +39,6 @@ See [CHANGELOG](CHANGELOG.md) for release notes
 | iam\_certificate\_id | Specifies IAM certificate id for CloudFront distribution | string | `null` | no |
 | minimum\_protocol\_version | The minimum version of the SSL protocol that you want CloudFront to use for HTTPS connections.      One of SSLv3, TLSv1, TLSv1_2016, TLSv1.1_2016 or TLSv1.2_2018. Default: TLSv1.      NOTE: If you are using a custom certificate (specified with acm_certificate_arn or iam_certificate_id),      and have specified sni-only in ssl_support_method, TLSv1 or later must be specified.      If you have specified vip in ssl_support_method, only SSLv3 or TLSv1 can be specified.      If you have specified cloudfront_default_certificate, TLSv1 must be specified. | string | n/a | yes |
 | price | The price class of the CloudFront Distribution.  Valid types are PriceClass_All, PriceClass_100, PriceClass_200 | string | `"PriceClass_100"` | no |
-| region | Target AWS region | string | `"us-east-1"` | no |
 | restriction\_location | The ISO 3166-1-alpha-2 codes for which you want CloudFront either to distribute your content (whitelist) or not distribute your content (blacklist) | list | `[]` | no |
 | restriction\_type | The restriction type of your CloudFront distribution geolocation restriction. Options include none, whitelist, blacklist | string | `"none"` | no |
 | retain\_on\_delete | Disables the distribution instead of deleting it when destroying the resource through Terraform. If this is set, the distribution needs to be deleted manually afterwards. | bool | `false` | no |

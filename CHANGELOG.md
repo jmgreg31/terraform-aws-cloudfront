@@ -7,6 +7,7 @@
 * Inside `logging_config`, the variables `include_cookies` & `prefix` are now optional
 * `origin_group` is now optional
 * `logging_config` & `default_cache_behavior` are not iterating anymore (as there can be only max one of these configs)
+* remove `provider.tf` as this should be defined per implementation.  Also removed `region` variable as this was only used for the provider.
 
 ## v4.1.1 (February 2020)
 

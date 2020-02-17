@@ -1,3 +1,4 @@
+create_cf                = true
 alias                    = []
 comment                  = "AWS Cloudfront Module"
 enable                   = true
