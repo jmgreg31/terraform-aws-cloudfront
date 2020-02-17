@@ -100,10 +100,36 @@ dynamic_default_cache_behavior = [
 
 dynamic_ordered_cache_behavior = [
   {
-    path_pattern           = "/cafe/"
+    path_pattern           = "/test1/"
     allowed_methods        = ["GET", "HEAD"]
     cached_methods         = ["GET", "HEAD"]
     target_origin_id       = "mydomain2origin.google.com"
+    compress               = false
+    query_string           = true
+    cookies_forward        = "all"
+    headers                = []
+    viewer_protocol_policy = "redirect-to-https"
+    min_ttl                = 0
+    default_ttl            = 0
+    max_ttl                = 0
+    lambda_function_association = [
+      {
+        event_type   = "viewer-request"
+        lambda_arn   = "YOUR LAMBDA ARN"
+        include_body = true
+      },
+      {
+        event_type   = "viewer-response"
+        lambda_arn   = "YOUR LAMBDA ARN2"
+        include_body = true
+      }
+    ]
+  },
+  {
+    path_pattern           = "/test2/"
+    allowed_methods        = ["GET", "HEAD"]
+    cached_methods         = ["GET", "HEAD"]
+    target_origin_id       = "S3-domain-cert"
     compress               = false
     query_string           = true
     cookies_forward        = "all"
