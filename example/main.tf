@@ -139,7 +139,7 @@ terraform {
 }
 
 module demo_cf {
-  source                         = "git::https://github.com/jmgreg31/terraform_aws_cloudfront.git?ref=staging"
+  source                         = "git::https://github.com/jmgreg31/terraform-aws-cloudfront.git?ref=staging"
   acm_certificate_arn            = var.acm_certificate_arn
   alias                          = var.alias
   cloudfront_default_certificate = var.cloudfront_default_certificate
