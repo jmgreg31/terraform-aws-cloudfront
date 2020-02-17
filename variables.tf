@@ -165,6 +165,12 @@ variable tag_name {
   default     = ""
 }
 
+variable additional_tags {
+  description = "A mapping of additional tags to attach"
+  type        = map(string)
+  default     = {}
+}
+
 variable wait_for_deployment {
   description = "If enabled, the resource will wait for the distribution status to change from InProgress to Deployed. Setting this tofalse will skip the process."
   type        = bool

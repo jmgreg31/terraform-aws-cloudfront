@@ -199,9 +199,9 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
     }
   }
 
-  tags = {
-    Name = var.tag_name
-  }
+  tags = merge(
+    var.additional_tags,
+  { "Name" = var.tag_name })
 
   restrictions {
     geo_restriction {
