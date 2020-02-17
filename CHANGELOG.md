@@ -7,6 +7,7 @@
 * Inside `logging_config`, the variables `include_cookies` & `prefix` are now optional
 * `origin_group` is now optional
 * `logging_config` & `default_cache_behavior` are not iterating anymore (as there can be only max one of these configs)
+* Certificates - `cloudfront_default_certificate` & `ssl_support_method` are not required anymore, they default to `true` & `sni-only` if a certificate acm or iam is specified, configuration will auto modify them
 
 ## v4.1.1 (February 2020)
 

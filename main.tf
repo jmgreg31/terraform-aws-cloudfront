@@ -211,9 +211,9 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
 
   viewer_certificate {
     acm_certificate_arn            = var.acm_certificate_arn
-    cloudfront_default_certificate = var.cloudfront_default_certificate
     iam_certificate_id             = var.iam_certificate_id
+    cloudfront_default_certificate = var.acm_certificate_arn == null && var.iam_certificate_id == null ? true : false
+    ssl_support_method             = var.acm_certificate_arn == null && var.iam_certificate_id == null ? null : "sni-only"
     minimum_protocol_version       = var.minimum_protocol_version
-    ssl_support_method             = var.ssl_support_method
   }
 }
