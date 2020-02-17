@@ -139,7 +139,7 @@ terraform {
   backend "s3" {
     bucket  = "jmgreg31"
     key     = "cloudfront/terraform.tfstate"
-    region  = var.region
+    region  = "us-east-1"
     encrypt = true
   }
 }
