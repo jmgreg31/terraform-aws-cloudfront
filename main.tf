@@ -1,5 +1,5 @@
 resource "aws_cloudfront_distribution" "cloudfront_distribution" {
-  count = var.enabled ? 1 : 0
+  count = var.create_cf ? 1 : 0
 
   aliases             = var.alias
   comment             = var.comment
@@ -201,7 +201,7 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
 
   tags = merge(
     var.additional_tags,
-  { "Name" = var.tag_name })
+  { Name = var.tag_name })
 
   restrictions {
     geo_restriction {
