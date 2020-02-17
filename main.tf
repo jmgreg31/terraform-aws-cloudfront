@@ -1,6 +1,5 @@
 resource "aws_cloudfront_distribution" "cloudfront_distribution" {
-  count = var.create_cf ? 1 : 0
-
+  count               = var.create_cf ? 1 : 0
   aliases             = var.alias
   comment             = var.comment
   default_root_object = var.default_root_object
