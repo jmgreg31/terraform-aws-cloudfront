@@ -5,6 +5,7 @@
 * Inside `ordered_cache_behavior` & `default_cache_behavior` made these variables optional: `compress`, `headers`, `min_ttl`, `max_ttl`, `default_ttl`, also made `lambda_function_association` optional, now possible not to specify it at all
 * Inside `lambda_function_association`, made the variable `include_body` optional
 * Inside `logging_config`, the variables `include_cookies` & `prefix` are now optional
+* `origin_group` is now optional
 * `logging_config` & `default_cache_behavior` are not iterating anymore (as there can be only max one of these configs)
 
 ## v4.1.1 (February 2020)
