@@ -1,7 +1,19 @@
+variable create_cf {
+  description = "Set to false to prevent the module from creating any resources"
+  type        = bool
+  default     = true
+}
+
 variable acm_certificate_arn {
-  description = "The ARN of the AWS Certificate Manager certificate that you wish to use with this distribution"
+  description = "The ARN of the AWS Certificate Manager certificate that you wish to use with this distribution. The ACM certificate must be in US-EAST-1."
   type        = string
   default     = null
+}
+
+variable additional_tags {
+  description = "A mapping of additional tags to attach"
+  type        = map(string)
+  default     = {}
 }
 
 variable alias {
@@ -11,7 +23,7 @@ variable alias {
 }
 
 variable cloudfront_default_certificate {
-  description = "If you want viewers to use HTTPS to request your objects and you're using the cloudfront domain name for your distribution"
+  description = "This variable is not required anymore, being auto generated, left here for compability purposes"
   type        = bool
   default     = true
 }
@@ -30,30 +42,31 @@ variable default_root_object {
 
 variable dynamic_custom_error_response {
   description = "Custom error response to be used in dynamic block"
-  type = any
-  default = []
+  type        = any
+  default     = []
 }
 
 variable dynamic_custom_origin_config {
   description = "Configuration for the custom origin config to be used in dynamic block"
-  type = any
-  default = []
+  type        = any
+  default     = []
 }
 
 variable dynamic_default_cache_behavior {
   description = "Default Cache Behviors to be used in dynamic block"
-  type = any
+  type        = any
 }
 
 variable dynamic_ordered_cache_behavior {
   description = "Ordered Cache Behaviors to be used in dynamic block"
-  type = any
-  default = []
+  type        = any
+  default     = []
 }
 
 variable dynamic_origin_group {
   description = "Origin Group to be used in dynamic block"
-  type = any
+  type        = any
+  default     = []
 }
 
 variable dynamic_logging_config {
@@ -76,8 +89,8 @@ variable dynamic_logging_config {
 
 variable dynamic_s3_origin_config {
   description = "Configuration for the s3 origin config to be used in dynamic block"
-  type = list(map(string))
-  default = []
+  type        = list(map(string))
+  default     = []
 }
 
 variable enable {
@@ -114,7 +127,8 @@ variable minimum_protocol_version {
     If you have specified cloudfront_default_certificate, TLSv1 must be specified.
     EOF
 
-  type = string
+  type    = string
+  default = "TLSv1"
 }
 
 variable price {
@@ -148,8 +162,9 @@ variable retain_on_delete {
 }
 
 variable ssl_support_method {
-  description = "Specifies how you want CloudFront to serve HTTPS requests. One of vip or sni-only."
+  description = "This variable is not required anymore, being auto generated, left here for compability purposes"
   type        = string
+  default     = "sni-only"
 }
 
 variable tag_name {

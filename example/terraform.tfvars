@@ -1,3 +1,4 @@
+create_cf                = true
 alias                    = []
 comment                  = "AWS Cloudfront Module"
 enable                   = true
@@ -10,6 +11,9 @@ restriction_type         = "none"
 iam_certificate_id       = "sslcert"
 ssl_support_method       = "sni-only"
 tag_name                 = "AWS Cloudfront Module"
+additional_tags          = {
+    Test1 = "Test1"
+}
 webacl                   = "webaclid"
 
 dynamic_s3_origin_config = [
