@@ -8,6 +8,7 @@
 * `origin_group` is now optional
 * `logging_config` & `default_cache_behavior` are not iterating anymore (as there can be only max one of these configs)
 * remove `provider.tf` as this should be defined per implementation.  Also removed `region` variable as this was only used for the provider.
+* certificates - `cloudfront_default_certificate` & `ssl_support_method` are not required anymore, they default to `true` & `sni-only` if a certificate acm or iam is specified, configuration will auto modify them
 
 ## v4.1.1 (February 2020)
 
