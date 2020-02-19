@@ -1,4 +1,4 @@
-## UNRELEASED (February 2020)
+## v4.2.0 (February 2020)
 
 * Added ability to disable the creation of the resource with variable `create_cf`, defaults to `true`
 * Adding possibility to add additional tags
