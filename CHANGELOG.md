@@ -1,3 +1,8 @@
+## v4.2.1 (March 2020)
+
+* fixed a bug that was previously allowing to apply a security policy when no certificate is specified
+* default root object now set as null
+
 ## v4.2.0 (February 2020)
 
 * Added ability to disable the creation of the resource with variable `create_cf`, defaults to `true`
