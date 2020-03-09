@@ -1,4 +1,4 @@
-## UNRELEASED (March 2020)
+## v4.2.1 (March 2020)
 
 * fixed a bug that was previously allowing to apply a security policy when no certificate is specified
 * default root object now set as null
