@@ -37,7 +37,7 @@ variable comment {
 variable default_root_object {
   description = "The object that you want CloudFront to return (for example, index.html) when an end user requests the root URL"
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable dynamic_custom_error_response {
