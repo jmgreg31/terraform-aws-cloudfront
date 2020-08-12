@@ -19,7 +19,7 @@ output "status" {
 }
 
 output "active_trusted_signers" {
-  value       = length(aws_cloudfront_distribution.cloudfront_distribution) > 0 ? aws_cloudfront_distribution.cloudfront_distribution[0].active_trusted_signers : {}
+  value       = length(aws_cloudfront_distribution.cloudfront_distribution) > 0 ? aws_cloudfront_distribution.cloudfront_distribution[0].trusted_signers : []
   description = "The key pair IDs that CloudFront is aware of for each trusted signer, if the distribution is set up to serve private content with signed URLs."
 }
 
