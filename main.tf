@@ -146,6 +146,7 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
       cached_methods   = cache_behavior.value.cached_methods
       target_origin_id = cache_behavior.value.target_origin_id
       compress         = lookup(cache_behavior.value, "compress", null)
+      trusted_signers  = cache_behavior.value.trusted_signers
 
       forwarded_values {
         query_string = cache_behavior.value.query_string
