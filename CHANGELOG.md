@@ -1,3 +1,8 @@
+## v4.2.2 (August 2020)
+
+* add `trusted_signers` option inside `ordered_cache_behavior` & `default_cache_behavior` blocks. Made optional
+* change output variable to trusted_signers from active_trusted_signers, and fix default to list instead of map
+
 ## v4.2.1 (March 2020)
 
 * fixed a bug that was previously allowing to apply a security policy when no certificate is specified

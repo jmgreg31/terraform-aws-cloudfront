@@ -44,6 +44,7 @@ See [CHANGELOG](CHANGELOG.md) for release notes
 | retain\_on\_delete | Disables the distribution instead of deleting it when destroying the resource through Terraform. If this is set, the distribution needs to be deleted manually afterwards. | bool | `false` | no |
 | ssl\_support\_method | This variable is not required anymore, being auto generated, left here for compability purposes | string | sni-only | no |
 | tag\_name | The tagged name | string | n/a | no |
+| trusted_signers | List of AWS account IDs (or self) that you want to allow to create signed URLs for private content. | list | null | no |
 | wait\_for\_deployment | If enabled, the resource will wait for the distribution status to change from InProgress to Deployed. Setting this tofalse will skip the process. | bool | `true` | no |
 | webacl | The WAF Web ACL | string | `""` | no |
 
@@ -55,7 +56,7 @@ See [CHANGELOG](CHANGELOG.md) for release notes
 | arn | The ARN (Amazon Resource Name) for the distribution. For example: arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5, where 123456789012 is your AWS account ID. |
 | caller_reference | Internal value used by CloudFront to allow future updates to the distribution configuration. |
 | status | The current status of the distribution. Deployed if the distribution's information is fully propagated throughout the Amazon CloudFront system. |
-| active_trusted_signers | The key pair IDs that CloudFront is aware of for each trusted signer, if the distribution is set up to serve private content with signed URLs. |
+| trusted_signers | The key pair IDs that CloudFront is aware of for each trusted signer, if the distribution is set up to serve private content with signed URLs. |
 | domain_name | The domain name corresponding to the distribution. For example: d604721fxaaqy9.cloudfront.net. |
 | name | The domain name corresponding to the distribution. For example: d604721fxaaqy9.cloudfront.net. |
 | last_modified_time | The date and time the distribution was last modified. |

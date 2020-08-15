@@ -92,6 +92,7 @@ dynamic_default_cache_behavior = [
     min_ttl                = 0
     default_ttl            = 0
     max_ttl                = 0
+    trusted_signers        = ["self", "123456789012"]
     lambda_function_association = [
       {
         event_type   = "viewer-request"
@@ -116,6 +117,7 @@ dynamic_ordered_cache_behavior = [
     min_ttl                = 0
     default_ttl            = 0
     max_ttl                = 0
+    trusted_signers        = ["self", "123456789012"]
     lambda_function_association = [
       {
         event_type   = "viewer-request"
