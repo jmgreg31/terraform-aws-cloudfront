@@ -105,6 +105,7 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
 
   dynamic "default_cache_behavior" {
     for_each = var.dynamic_default_cache_behavior[*]
+    iterator = cache_behavior
 
     content {
       allowed_methods  = default_cache_behavior.value.allowed_methods
@@ -141,6 +142,7 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
   dynamic "ordered_cache_behavior" {
     for_each = var.dynamic_ordered_cache_behavior
     iterator = cache_behavior
+
     content {
       path_pattern     = cache_behavior.value.path_pattern
       allowed_methods  = cache_behavior.value.allowed_methods
