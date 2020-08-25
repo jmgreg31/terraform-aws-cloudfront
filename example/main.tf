@@ -206,12 +206,12 @@ terraform {
 }
 
 provider "aws" {
-  version = ">= 2.28.0"
+  version = ">= 3.0.0"
   region  = var.region
 }
 
 module demo_cf {
-  source                         = "git::https://github.com/jmgreg31/terraform-aws-cloudfront.git?ref=v4.2.1"
+  source                         = "git::https://github.com/jmgreg31/terraform-aws-cloudfront.git?ref=staging"
   create_cf                      = var.create_cf
   acm_certificate_arn            = var.acm_certificate_arn
   additional_tags                = var.additional_tags
