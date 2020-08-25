@@ -1,3 +1,8 @@
+## UNRELEASED (August 2020)
+
+* Updated the module to support AWS Provider 3.0.0, this is now minimum version required
+* `active_trusted_signers` variable has been renamed to `trusted_signers` to accomodate the change in the provider
+
 ## v4.2.1 (March 2020)
 
 * fixed a bug that was previously allowing to apply a security policy when no certificate is specified
