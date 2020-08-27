@@ -1,4 +1,10 @@
-## UNRELEASED (March 2020)
+## UNRELEASED (August 2020)
+
+* Updated the module to support AWS Provider 3.0.0, this is now minimum version required
+* `active_trusted_signers` variable has been renamed to `trusted_signers` to accomodate the change in the provider
+* Supports now `TLSv1.2_2019` for SSL in Cloudfront, under the `minimum_protocol_version` variable
+
+## v4.2.1 (March 2020)
 
 * fixed a bug that was previously allowing to apply a security policy when no certificate is specified
 * default root object now set as null
