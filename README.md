@@ -7,7 +7,8 @@ This is a module to build a cloudfront distribution.  It has been modularized to
 
 ## Notes
 
-* This Module only supports Terraform Version 12
+* This Module supports Terraform Version 0.12 and above
+* This Module has been tested & verified with 0.13.1
 * While `dynamic_custom_origin_config` and `dynamic_s3_origin_config` are considered not
   required, you must supply atleast one origin config.
 
