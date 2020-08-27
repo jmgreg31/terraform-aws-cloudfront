@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.com/jmgreg31/terraform-aws-cloudfront.svg?branch=master)](https://travis-ci.com/jmgreg31/terraform-aws-cloudfront)
-[![Latest Release](https://img.shields.io/badge/release-v4.3.0-blue.svg)](https://github.com/jmgreg31/terraform-aws-cloudfront/releases/tag/v4.3.0)
+[![Latest Release](https://img.shields.io/badge/release-v4.3.0
+-blue.svg)](https://github.com/jmgreg31/terraform-aws-cloudfront/releases/tag/v4.3.0
+)
 
 # Terraform Cloudfront Module
 
