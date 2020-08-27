@@ -1,4 +1,5 @@
-## UNRELEASED (August 2020)
+## v4.3.0
+ (August 2020)
 
 * Updated the module to support AWS Provider 3.0.0, this is now minimum version required
 * `active_trusted_signers` variable has been renamed to `trusted_signers` to accomodate the change in the provider
