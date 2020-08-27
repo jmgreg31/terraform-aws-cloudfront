@@ -7,7 +7,8 @@ This is a module to build a cloudfront distribution.  It has been modularized to
 
 ## Notes
 
-* This Module only supports Terraform Version 12
+* This Module supports Terraform Version 0.12 and above
+* This Module has been tested & verified with 0.13.1
 * While `dynamic_custom_origin_config` and `dynamic_s3_origin_config` are considered not
   required, you must supply atleast one origin config.
 
@@ -37,7 +38,7 @@ See [CHANGELOG](CHANGELOG.md) for release notes
 | enable\_ipv6 | Whether the IPv6 is enabled for the distribution | bool | `true` | no |
 | http\_version | The maximum HTTP version to support on the distribution. Allowed values are http1.1 and http2 | string | `"http2"` | no |
 | iam\_certificate\_id | Specifies IAM certificate id for CloudFront distribution | string | `null` | no |
-| minimum\_protocol\_version | The minimum version of the SSL protocol that you want CloudFront to use for HTTPS connections.      One of SSLv3, TLSv1, TLSv1_2016, TLSv1.1_2016 or TLSv1.2_2018. Default: TLSv1.      NOTE: If you are using a custom certificate (specified with acm_certificate_arn or iam_certificate_id),      and have specified sni-only in ssl_support_method, TLSv1 or later must be specified.      If you have specified vip in ssl_support_method, only SSLv3 or TLSv1 can be specified.      If you have specified cloudfront_default_certificate, TLSv1 must be specified. | string | TLSv1 | no |
+| minimum\_protocol\_version | The minimum version of the SSL protocol that you want CloudFront to use for HTTPS connections.      One of SSLv3, TLSv1, TLSv1_2016, TLSv1.1_2016, TLSv1.2_2018 or TLSv1.2_2019. Default: TLSv1.      NOTE: If you are using a custom certificate (specified with acm_certificate_arn or iam_certificate_id),      and have specified sni-only in ssl_support_method, TLSv1 or later must be specified.      If you have specified vip in ssl_support_method, only SSLv3 or TLSv1 can be specified.      If you have specified cloudfront_default_certificate, TLSv1 must be specified. | string | TLSv1 | no |
 | price | The price class of the CloudFront Distribution.  Valid types are PriceClass_All, PriceClass_100, PriceClass_200 | string | `"PriceClass_100"` | no |
 | restriction\_location | The ISO 3166-1-alpha-2 codes for which you want CloudFront either to distribute your content (whitelist) or not distribute your content (blacklist) | list | `[]` | no |
 | restriction\_type | The restriction type of your CloudFront distribution geolocation restriction. Options include none, whitelist, blacklist | string | `"none"` | no |
@@ -55,7 +56,7 @@ See [CHANGELOG](CHANGELOG.md) for release notes
 | arn | The ARN (Amazon Resource Name) for the distribution. For example: arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5, where 123456789012 is your AWS account ID. |
 | caller_reference | Internal value used by CloudFront to allow future updates to the distribution configuration. |
 | status | The current status of the distribution. Deployed if the distribution's information is fully propagated throughout the Amazon CloudFront system. |
-| active_trusted_signers | The key pair IDs that CloudFront is aware of for each trusted signer, if the distribution is set up to serve private content with signed URLs. |
+| trusted_signers | The key pair IDs that CloudFront is aware of for each trusted signer, if the distribution is set up to serve private content with signed URLs. |
 | domain_name | The domain name corresponding to the distribution. For example: d604721fxaaqy9.cloudfront.net. |
 | name | The domain name corresponding to the distribution. For example: d604721fxaaqy9.cloudfront.net. |
 | last_modified_time | The date and time the distribution was last modified. |

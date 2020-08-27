@@ -161,8 +161,8 @@ output "status" {
   description = "The current status of the distribution. Deployed if the distribution's information is fully propagated throughout the Amazon CloudFront system."
 }
 
-output "active_trusted_signers" {
-  value       = module.demo_cf.active_trusted_signers
+output "trusted_signers" {
+  value       = module.demo_cf.trusted_signers
   description = "The key pair IDs that CloudFront is aware of for each trusted signer, if the distribution is set up to serve private content with signed URLs."
 }
 
@@ -206,12 +206,12 @@ terraform {
 }
 
 provider "aws" {
-  version = ">= 2.28.0"
+  version = ">= 3.0.0"
   region  = var.region
 }
 
 module demo_cf {
-  source                         = "git::https://github.com/jmgreg31/terraform-aws-cloudfront.git?ref=v4.2.1"
+  source                         = "git::https://github.com/jmgreg31/terraform-aws-cloudfront.git?ref=staging"
   create_cf                      = var.create_cf
   acm_certificate_arn            = var.acm_certificate_arn
   additional_tags                = var.additional_tags
