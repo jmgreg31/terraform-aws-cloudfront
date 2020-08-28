@@ -6,7 +6,7 @@ def getVersion():
         for line in version:
             output=line
             bumpversion='v'+ output
-    return bumpversion
+    return bumpversion.rstrip()
 
 def getData(filename,expression,replacement):
     with open (filename, 'r') as readme:
