@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.com/jmgreg31/terraform-aws-cloudfront.svg?branch=master)](https://travis-ci.com/jmgreg31/terraform-aws-cloudfront)
-[![Latest Release](https://img.shields.io/badge/release-v4.2.1-blue.svg)](https://github.com/jmgreg31/terraform-aws-cloudfront/releases/tag/v4.2.1)
+[![Latest Release](https://img.shields.io/badge/release-v4.3.0-blue.svg)](https://github.com/jmgreg31/terraform-aws-cloudfront/releases/tag/v4.3.0)
 
 # Terraform Cloudfront Module
 
@@ -8,7 +8,7 @@ This is a module to build a cloudfront distribution.  It has been modularized to
 ## Notes
 
 * This Module supports Terraform Version 0.12 and above
-* This Module has been tested & verified with 0.13.1
+* This Module has been tested & verified with 0.13.3
 * While `dynamic_custom_origin_config` and `dynamic_s3_origin_config` are considered not
   required, you must supply atleast one origin config.
 
