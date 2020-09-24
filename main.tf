@@ -173,18 +173,13 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
   }
 
   dynamic "custom_error_response" {
-    for_each = [for i in var.dynamic_custom_error_response : {
-      error_caching_min_ttl = i.error_caching_min_ttl
-      error_code            = i.error_code
-      response_code         = i.response_code
-      response_page_path    = i.response_page_path
-    }]
+    for_each = var.dynamic_custom_error_response
 
     content {
-      error_caching_min_ttl = custom_error_response.value.error_caching_min_ttl
       error_code            = custom_error_response.value.error_code
-      response_code         = custom_error_response.value.response_code
-      response_page_path    = custom_error_response.value.response_page_path
+      error_caching_min_ttl = lookup(custom_error_response.value, "error_caching_min_ttl", null)
+      response_code         = lookup(custom_error_response.value, "response_code", null)
+      response_page_path    = lookup(custom_error_response.value, "response_page_path", null)
     }
   }
 
