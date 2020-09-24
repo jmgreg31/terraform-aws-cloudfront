@@ -147,7 +147,7 @@ dynamic_ordered_cache_behavior = [
 
 dynamic_custom_error_response = [
   {
-    error_code            = 400
+    error_code = 400
   },
   {
     error_caching_min_ttl = 10
@@ -160,9 +160,9 @@ dynamic_custom_error_response = [
     response_page_path    = "/error/200.html"
   },
   {
-    error_code            = 405
-    response_code         = null
-    response_page_path    = ""
+    error_code         = 405
+    response_code      = null
+    response_page_path = ""
   },
   {
     error_caching_min_ttl = 1
