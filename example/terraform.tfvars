@@ -27,6 +27,16 @@ dynamic_s3_origin_config = [
     origin_id              = "S3-domain2-cert"
     origin_access_identity = "origin-access-identity/cloudfront/1234"
     origin_path            = ""
+    custom_header = [
+      {
+        name  = "Test"
+        value = "Test-Header"
+      },
+      {
+        name  = "Test2"
+        value = "Test2-Header"
+      }
+    ]
   }
 ]
 
