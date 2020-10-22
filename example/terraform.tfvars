@@ -27,6 +27,16 @@ dynamic_s3_origin_config = [
     origin_id              = "S3-domain2-cert"
     origin_access_identity = "origin-access-identity/cloudfront/1234"
     origin_path            = ""
+    custom_header = [
+      {
+        name  = "Test"
+        value = "Test-Header"
+      },
+      {
+        name  = "Test2"
+        value = "Test2-Header"
+      }
+    ]
   }
 ]
 
@@ -147,7 +157,7 @@ dynamic_ordered_cache_behavior = [
 
 dynamic_custom_error_response = [
   {
-    error_code            = 400
+    error_code = 400
   },
   {
     error_caching_min_ttl = 10
@@ -160,9 +170,9 @@ dynamic_custom_error_response = [
     response_page_path    = "/error/200.html"
   },
   {
-    error_code            = 405
-    response_code         = null
-    response_page_path    = ""
+    error_code         = 405
+    response_code      = null
+    response_page_path = ""
   },
   {
     error_caching_min_ttl = 1
