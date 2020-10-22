@@ -1,3 +1,7 @@
+## UNRELEASED (October 2020)
+
+* fix `dynamic_s3_origin_config` variable, to match the configuration of `dynamic_custom_origin_config`. This fixes a bug where `custom_headers` couldn't be set.
+
 ## v4.3.1 (September 2020)
 
 * refactored the `dynamic_custom_error_response` variable, specifying all the fields is not needed anymore
