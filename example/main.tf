@@ -61,7 +61,7 @@ variable dynamic_origin_group {
 
 variable dynamic_s3_origin_config {
   description = "Configuration for the s3 origin config to be used in dynamic block"
-  type        = list(map(string))
+  type        = any
 }
 
 variable enable {
