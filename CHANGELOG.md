@@ -1,4 +1,4 @@
-## UNRELEASED (October 2020)
+## v4.3.2 (October 2020)
 
 * fix `dynamic_s3_origin_config` variable, to match the configuration of `dynamic_custom_origin_config`. This fixes a bug where `custom_headers` couldn't be set.
 
