@@ -105,70 +105,85 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
 
   dynamic "default_cache_behavior" {
     for_each = var.dynamic_default_cache_behavior[*]
+    iterator = j
 
     content {
-      allowed_methods  = default_cache_behavior.value.allowed_methods
-      cached_methods   = default_cache_behavior.value.cached_methods
-      target_origin_id = default_cache_behavior.value.target_origin_id
-      compress         = lookup(default_cache_behavior.value, "compress", null)
+      allowed_methods        = j.value.allowed_methods
+      cached_methods         = j.value.cached_methods
+      target_origin_id       = j.value.target_origin_id
+      compress               = lookup(j.value, "compress", null)
+      viewer_protocol_policy = j.value.viewer_protocol_policy
 
-      forwarded_values {
-        query_string = default_cache_behavior.value.query_string
-        cookies {
-          forward = default_cache_behavior.value.cookies_forward
+      cache_policy_id          = lookup(j.value, "cache_policy_id", null)
+      origin_request_policy_id = lookup(j.value, "origin_request_policy_id", null)
+
+      min_ttl     = lookup(j.value, "min_ttl", null)
+      default_ttl = lookup(j.value, "default_ttl", null)
+      max_ttl     = lookup(j.value, "max_ttl", null)
+
+      dynamic "forwarded_values" {
+        for_each = lookup(j.value, "use_forwarded_values", true) ? [true] : []
+        content {
+          query_string = lookup(j.value, "query_string", null)
+          headers      = lookup(j.value, "headers", null)
+
+          cookies {
+            forward = lookup(j.value, "cookies_forward", null)
+          }
         }
-        headers = lookup(default_cache_behavior.value, "headers", null)
       }
 
       dynamic "lambda_function_association" {
         iterator = lambda
-        for_each = lookup(default_cache_behavior.value, "lambda_function_association", [])
+        for_each = lookup(j.value, "lambda_function_association", [])
         content {
           event_type   = lambda.value.event_type
           lambda_arn   = lambda.value.lambda_arn
           include_body = lookup(lambda.value, "include_body", null)
         }
       }
-
-      viewer_protocol_policy = default_cache_behavior.value.viewer_protocol_policy
-      min_ttl                = lookup(default_cache_behavior.value, "min_ttl", null)
-      default_ttl            = lookup(default_cache_behavior.value, "default_ttl", null)
-      max_ttl                = lookup(default_cache_behavior.value, "max_ttl", null)
     }
   }
 
   dynamic "ordered_cache_behavior" {
     for_each = var.dynamic_ordered_cache_behavior
-    iterator = cache_behavior
+    iterator = j
     content {
-      path_pattern     = cache_behavior.value.path_pattern
-      allowed_methods  = cache_behavior.value.allowed_methods
-      cached_methods   = cache_behavior.value.cached_methods
-      target_origin_id = cache_behavior.value.target_origin_id
-      compress         = lookup(cache_behavior.value, "compress", null)
+      path_pattern           = j.value.path_pattern
+      allowed_methods        = j.value.allowed_methods
+      cached_methods         = j.value.cached_methods
+      target_origin_id       = j.value.target_origin_id
+      compress               = lookup(j.value, "compress", null)
+      viewer_protocol_policy = j.value.viewer_protocol_policy
 
-      forwarded_values {
-        query_string = cache_behavior.value.query_string
-        cookies {
-          forward = cache_behavior.value.cookies_forward
+      cache_policy_id          = lookup(j.value, "cache_policy_id", null)
+      origin_request_policy_id = lookup(j.value, "origin_request_policy_id", null)
+
+      min_ttl     = lookup(j.value, "min_ttl", null)
+      default_ttl = lookup(j.value, "default_ttl", null)
+      max_ttl     = lookup(j.value, "max_ttl", null)
+
+      dynamic "forwarded_values" {
+        for_each = lookup(j.value, "use_forwarded_values", true) ? [true] : []
+        content {
+          query_string = lookup(j.value, "query_string", null)
+          headers      = lookup(j.value, "headers", null)
+
+          cookies {
+            forward = lookup(j.value, "cookies_forward", null)
+          }
         }
-        headers = lookup(cache_behavior.value, "headers", null)
       }
 
       dynamic "lambda_function_association" {
         iterator = lambda
-        for_each = lookup(cache_behavior.value, "lambda_function_association", [])
+        for_each = lookup(j.value, "lambda_function_association", [])
         content {
           event_type   = lambda.value.event_type
           lambda_arn   = lambda.value.lambda_arn
           include_body = lookup(lambda.value, "include_body", null)
         }
       }
-
-      viewer_protocol_policy = cache_behavior.value.viewer_protocol_policy
-      min_ttl                = lookup(cache_behavior.value, "min_ttl", null)
-      default_ttl            = lookup(cache_behavior.value, "default_ttl", null)
-      max_ttl                = lookup(cache_behavior.value, "max_ttl", null)
     }
   }
 
