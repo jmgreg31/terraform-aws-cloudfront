@@ -16,7 +16,7 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
       name          = i.domain_name
       id            = i.origin_id
       identity      = lookup(i, "origin_access_identity", null)
-      path          = lookup(i, "origin_path", null)
+      path          = lookup(i, "origin_path", "")
       custom_header = lookup(i, "custom_header", null)
     }]
 
@@ -47,7 +47,7 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
     for_each = [for i in var.dynamic_custom_origin_config : {
       name                     = i.domain_name
       id                       = i.origin_id
-      path                     = lookup(i, "origin_path", null)
+      path                     = lookup(i, "origin_path", "")
       http_port                = i.http_port
       https_port               = i.https_port
       origin_keepalive_timeout = i.origin_keepalive_timeout
