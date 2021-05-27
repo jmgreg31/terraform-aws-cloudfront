@@ -1,3 +1,7 @@
+## UNRELEASED (May 2021)
+
+* Update `origin_path` variables to default to `""` as opposed to `null`.  This will solve issue #36
+
 ## v4.3.3 (April 2021)
 
 * Add enhancement to support `cache_policy_id` and `origin_request_policy_id`.  When in use, forwarded values cannot be used.  You are now able to set `use_forwarded_values` in the cache behavior blocks.
