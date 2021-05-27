@@ -1,4 +1,4 @@
-## UNRELEASED (May 2021)
+## v4.3.4 (May 2021)
 
 * Update `origin_path` variables to default to `""` as opposed to `null`.  This will solve issue #36
 
