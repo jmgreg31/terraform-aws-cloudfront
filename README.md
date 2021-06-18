@@ -11,6 +11,7 @@ This is a module to build a cloudfront distribution.  It has been modularized to
 * This Module has been tested & verified with 0.13.3
 * While `dynamic_custom_origin_config` and `dynamic_s3_origin_config` are considered not
   required, you must supply atleast one origin config.
+* Cloudfront functions require logging to be enabled
 
 ## Release
 

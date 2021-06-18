@@ -1,3 +1,7 @@
+## UNRELEASED (June 2021)
+
+* Update to add Cloudfront Function support.  PLEASE NOTE: Logging must be enabled for the function to be attached.
+
 ## v4.3.4 (May 2021)
 
 * Update `origin_path` variables to default to `""` as opposed to `null`.  This will solve issue #36
