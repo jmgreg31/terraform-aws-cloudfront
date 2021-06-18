@@ -109,6 +109,12 @@ dynamic_default_cache_behavior = [
         include_body = true
       }
     ]
+    function_association = [
+      {
+        event_type   = "viewer-request"
+        function_arn   = "YOUR CF FUNCTION ARN"
+      }
+    ]
   }
 ]
 

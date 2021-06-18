@@ -142,6 +142,15 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
           include_body = lookup(lambda.value, "include_body", null)
         }
       }
+
+      dynamic "function_association" {
+        iterator = cffunction
+        for_each = lookup(j.value, "function_association", [])
+        content {
+          event_type   = cffunction.value.event_type
+          function_arn   = cffunction.value.function_arn
+        }
+      }
     }
   }
 
@@ -184,6 +193,16 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
           include_body = lookup(lambda.value, "include_body", null)
         }
       }
+
+      dynamic "function_association" {
+        iterator = cffunction
+        for_each = lookup(j.value, "function_association", [])
+        content {
+          event_type   = cffunction.value.event_type
+          function_arn   = cffunction.value.function_arn
+        }
+      }
+      
     }
   }
 
