@@ -1,3 +1,7 @@
+## UNRELEASED (February 2023)
+
+* Update `default_cache_behavior` and `dynamic_ordered_cache_behavior` with ability to accept `response_headers_policy_id`(UUID) parameter.
+
 ## v4.3.6 (Feb 2023)
 
 * Move from Travis CI to GitHub Actions
