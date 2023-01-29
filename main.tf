@@ -116,6 +116,7 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
 
       cache_policy_id          = lookup(j.value, "cache_policy_id", null)
       origin_request_policy_id = lookup(j.value, "origin_request_policy_id", null)
+      response_headers_policy_id = lookup(j.value, "response_headers_policy_id", null)
 
       min_ttl     = lookup(j.value, "min_ttl", null)
       default_ttl = lookup(j.value, "default_ttl", null)
@@ -167,6 +168,7 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
 
       cache_policy_id          = lookup(j.value, "cache_policy_id", null)
       origin_request_policy_id = lookup(j.value, "origin_request_policy_id", null)
+      response_headers_policy_id = lookup(j.value, "response_headers_policy_id", null)
 
       min_ttl     = lookup(j.value, "min_ttl", null)
       default_ttl = lookup(j.value, "default_ttl", null)
@@ -202,7 +204,7 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
           function_arn   = cffunction.value.function_arn
         }
       }
-      
+
     }
   }
 
