@@ -1,0 +1,23 @@
+name: Version Bump
+on:
+  push:
+    branches:
+      - "master"
+jobs:
+  version-bump:
+    name: Version
+    runs-on: ubuntu-latest
+    environment: VERSION_BUMP
+    steps:
+    - name: Check-Out
+      uses: actions/checkout@v2
+      with:
+        repository: jmgreg31/terraform-aws-cloudfront
+        token: ${{ secrets.GH_TOKEN }}
+        path: ${{ env.DEVOPS_DIR }}
+
+    - name: Bump Version
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: python bump.py
+      shell: bash
