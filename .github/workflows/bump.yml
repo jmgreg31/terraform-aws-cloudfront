@@ -23,8 +23,6 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
-        ls -alh
         cd ${{ env.WORK_DIR }}
-        ls -alh
-        python ${{ env.WORK_DIR }}/bump.py
+        python bump.py
       shell: bash
