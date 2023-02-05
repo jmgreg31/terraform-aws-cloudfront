@@ -10,45 +10,44 @@ permissions:
   contents: read
   pull-requests: write
 
-jobs: 
+jobs:
   terraform:
     runs-on: ubuntu-latest
     name: Terraform
     environment: TERRAFORM_STAGING
     steps:
-    - name: Check-Out
-      uses: actions/checkout@v2
-      with:
-        repository: jmgreg31/terraform-aws-cloudfront
-        token: ${{ secrets.GITHUB_TOKEN }}
-        path: ${{ env.WORK_DIR }}
+      - name: Check-Out
+        uses: actions/checkout@v2
+        with:
+          repository: jmgreg31/terraform-aws-cloudfront
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: ${{ env.WORK_DIR }}
 
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v2
-      with:
-        terraform_version: 0.13.1
-        terraform_wrapper: false
-    - name: Terraform Format
-      id: fmt
-      run: terraform fmt
-      continue-on-error: true
-      shell: bash
-    - name: Terraform Init
-      id: init
-      run: |
-        cd ${{ env.WORK_DIR }}/example/
-        terraform init
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      shell: bash
-    - name: Terraform Plan
-      id: plan
-      run: |
-        cd ${{ env.WORK_DIR }}/example/
-        terraform plan
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      shell: bash
-
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 0.13.1
+          terraform_wrapper: false
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt
+        continue-on-error: true
+        shell: bash
+      - name: Terraform Init
+        id: init
+        run: |
+          cd ${{ env.WORK_DIR }}/example/
+          terraform init
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        shell: bash
+      - name: Terraform Plan
+        id: plan
+        run: |
+          cd ${{ env.WORK_DIR }}/example/
+          terraform plan
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        shell: bash
