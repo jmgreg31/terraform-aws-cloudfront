@@ -20,6 +20,7 @@ jobs:
         path: ${{ env.WORK_DIR }}
 
     - name: Bump Version
+      uses: hashicorp/setup-terraform@v2
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |

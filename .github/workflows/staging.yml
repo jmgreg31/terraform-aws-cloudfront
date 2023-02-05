@@ -21,7 +21,6 @@ jobs:
       id: fmt
       run: terraform fmt
       continue-on-error: true
-      working-directory: ./
       shell: bash
     - name: Terraform Init
       id: init

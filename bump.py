@@ -32,14 +32,14 @@ def updateMaintf():
     data=getData('example/main.tf',r'source[ \t]+\=.*',replacement)
     with open ('example/main.tf', 'w') as newfile:
         newfile.write(data)
-    os.system('./terraform fmt')
+    os.system('terraform fmt')
 
 def updateGit():
     bumpversion = getVersion()
     os.system('git config --global user.email \"jmgreg31@gmail.com\" && \
                git config --global user.name "Jon Greg"')
     os.system('git checkout master')
-    os.system('git add ../README.md ../CHANGELOG.md main.tf terraform.tfvars')
+    os.system('git add README.md CHANGELOG.md main.tf terraform.tfvars')
     os.system('git commit -m "Bump Version to {}"'.format(bumpversion))
     os.system('git remote set-url origin https://jmgreg31:${GH_TOKEN}@github.com/jmgreg31/terraform-aws-cloudfront.git > /dev/null 2>&1')
     os.system('git push origin master')
