@@ -1,4 +1,4 @@
-## UNRELEASED (Feb 2023)
+## v4.3.6 (Feb 2023)
 
 * Move from Travis CI to GitHub Actions
 
