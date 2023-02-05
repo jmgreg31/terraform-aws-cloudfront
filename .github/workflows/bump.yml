@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - "master"
+env:
+  WORK_DIR: terraform-cloudfront
+
 jobs:
   version-bump:
     name: Version
@@ -14,9 +17,10 @@ jobs:
       with:
         repository: jmgreg31/terraform-aws-cloudfront
         token: ${{ secrets.GH_TOKEN }}
+        path: ${{ env.WORK_DIR }}
 
     - name: Bump Version
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      run: python bump.py
+      run: python ${{ env.WORK_DIR }}/bump.py
       shell: bash
