@@ -20,10 +20,11 @@ jobs:
         path: ${{ env.WORK_DIR }}
 
     - name: Bump Version
-      uses: hashicorp/setup-terraform@v2
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
         cd ${{ env.WORK_DIR }}
+        wget https://releases.hashicorp.com/terraform/0.13.1/terraform_0.13.1_linux_amd64.zip
+        unzip terraform_0.13.1_linux_amd64.zip
         python bump.py
       shell: bash
