@@ -36,11 +36,11 @@ def updateMaintf():
 
 def updateGit():
     bumpversion = getVersion()
-    os.system('git config --global user.email \"travis@travis-ci.org\" && \
-               git config --global user.name "Travis CI"')
+    os.system('git config --global user.email \"jmgreg31@gmail.com\" && \
+               git config --global user.name "Jon Greg"')
     os.system('git checkout master')
     os.system('git add ../README.md ../CHANGELOG.md main.tf terraform.tfvars')
-    os.system('git commit -m "Bump Version to {} [skip ci]"'.format(bumpversion))
+    os.system('git commit -m "Bump Version to {}"'.format(bumpversion))
     os.system('git remote set-url origin https://jmgreg31:${GH_TOKEN}@github.com/jmgreg31/terraform-aws-cloudfront.git > /dev/null 2>&1')
     os.system('git push origin master')
 
