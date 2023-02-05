@@ -1,0 +1,30 @@
+name: Version Bump
+on:
+  push:
+    branches:
+      - "master"
+env:
+  WORK_DIR: terraform-cloudfront
+
+jobs:
+  version-bump:
+    name: Version
+    runs-on: ubuntu-latest
+    environment: VERSION_BUMP
+    steps:
+    - name: Check-Out
+      uses: actions/checkout@v2
+      with:
+        repository: jmgreg31/terraform-aws-cloudfront
+        token: ${{ secrets.GH_TOKEN }}
+        path: ${{ env.WORK_DIR }}
+
+    - name: Bump Version
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        cd ${{ env.WORK_DIR }}
+        wget https://releases.hashicorp.com/terraform/0.13.1/terraform_0.13.1_linux_amd64.zip
+        unzip terraform_0.13.1_linux_amd64.zip
+        python bump.py
+      shell: bash

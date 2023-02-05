@@ -1,94 +1,94 @@
-variable create_cf {
+variable "create_cf" {
   description = "Set to false to prevent the module from creating any resources"
   type        = bool
   default     = true
 }
 
-variable acm_certificate_arn {
+variable "acm_certificate_arn" {
   description = "The ARN of the AWS Certificate Manager certificate that you wish to use with this distribution"
   type        = string
   default     = null
 }
 
-variable additional_tags {
+variable "additional_tags" {
   description = "A mapping of additional tags to attach"
   type        = map(string)
   default     = {}
 }
 
-variable alias {
+variable "alias" {
   description = "Aliases, or CNAMES, for the distribution"
-  type        = list
+  type        = list(any)
   default     = []
 }
 
-variable cloudfront_default_certificate {
+variable "cloudfront_default_certificate" {
   description = "If you want viewers to use HTTPS to request your objects and you're using the cloudfront domain name for your distribution"
   type        = bool
   default     = true
 }
 
-variable comment {
+variable "comment" {
   description = "Any comment about the CloudFront Distribution"
   type        = string
   default     = ""
 }
 
-variable dynamic_custom_error_response {
+variable "dynamic_custom_error_response" {
   description = "Custom error response to be used in dynamic block"
   type        = any
 }
 
-variable dynamic_custom_origin_config {
+variable "dynamic_custom_origin_config" {
   description = "Configuration for the custom origin config to be used in dynamic block"
   type        = any
 }
 
-variable dynamic_default_cache_behavior {
+variable "dynamic_default_cache_behavior" {
   description = "Default Cache Behviors to be used in dynamic block"
   type        = any
 }
 
-variable dynamic_ordered_cache_behavior {
+variable "dynamic_ordered_cache_behavior" {
   description = "Ordered Cache Behaviors to be used in dynamic block"
   type        = any
 }
 
-variable dynamic_origin_group {
+variable "dynamic_origin_group" {
   description = "Origin Group to be used in dynamic block"
   type        = any
 }
 
-variable dynamic_s3_origin_config {
+variable "dynamic_s3_origin_config" {
   description = "Configuration for the s3 origin config to be used in dynamic block"
   type        = any
 }
 
-variable enable {
+variable "enable" {
   description = "Whether the distribution is enabled to accept end user requests for content"
   type        = string
   default     = true
 }
 
-variable enable_ipv6 {
+variable "enable_ipv6" {
   description = "Whether the IPv6 is enabled for the distribution"
   type        = string
   default     = true
 }
 
-variable http_version {
+variable "http_version" {
   description = "The maximum HTTP version to support on the distribution. Allowed values are http1.1 and http2"
   type        = string
   default     = "http2"
 }
 
-variable iam_certificate_id {
+variable "iam_certificate_id" {
   description = "Specifies IAM certificate id for CloudFront distribution"
   type        = string
   default     = null
 }
 
-variable minimum_protocol_version {
+variable "minimum_protocol_version" {
   description = <<EOF
     The minimum version of the SSL protocol that you want CloudFront to use for HTTPS connections.
     One of SSLv3, TLSv1, TLSv1_2016, TLSv1.1_2016 or TLSv1.2_2018. Default: TLSv1.
@@ -101,41 +101,41 @@ variable minimum_protocol_version {
   type = string
 }
 
-variable price {
+variable "price" {
   description = "The price class of the CloudFront Distribution.  Valid types are PriceClass_All, PriceClass_100, PriceClass_200"
   type        = string
   default     = "PriceClass_100"
 }
 
-variable region {
+variable "region" {
   description = "Target AWS region"
   type        = string
   default     = "us-east-1"
 }
 
-variable restriction_location {
+variable "restriction_location" {
   description = "The ISO 3166-1-alpha-2 codes for which you want CloudFront either to distribute your content (whitelist) or not distribute your content (blacklist)"
-  type        = list
+  type        = list(any)
   default     = []
 }
 
-variable restriction_type {
+variable "restriction_type" {
   description = "The restriction type of your CloudFront distribution geolocation restriction. Options include none, whitelist, blacklist"
   type        = string
   default     = "none"
 }
 
-variable ssl_support_method {
+variable "ssl_support_method" {
   description = "Specifies how you want CloudFront to serve HTTPS requests. One of vip or sni-only."
   type        = string
 }
 
-variable tag_name {
+variable "tag_name" {
   description = "The tagged name"
   type        = string
 }
 
-variable webacl {
+variable "webacl" {
   description = "The WAF Web ACL"
   type        = string
   default     = ""
@@ -210,7 +210,7 @@ provider "aws" {
   region  = var.region
 }
 
-module demo_cf {
+module "demo_cf" {
   source                         = "git::https://github.com/jmgreg31/terraform-aws-cloudfront.git?ref=staging"
   create_cf                      = var.create_cf
   acm_certificate_arn            = var.acm_certificate_arn

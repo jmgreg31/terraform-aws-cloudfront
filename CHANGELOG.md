@@ -1,4 +1,8 @@
-## UNRELEASED (June 2021)
+## v4.3.6 (Feb 2023)
+
+* Move from Travis CI to GitHub Actions
+
+## v4.3.5 (June 2021)
 
 * Update to add Cloudfront Function support.  PLEASE NOTE: Logging must be enabled for the function to be attached.
 

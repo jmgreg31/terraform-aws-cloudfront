@@ -2,7 +2,7 @@ import re
 import os
 
 def getVersion():
-    with open ('../VERSION','r') as version:
+    with open ('VERSION','r') as version:
         for line in version:
             output=line
             bumpversion='v'+ output
@@ -16,31 +16,31 @@ def getData(filename,expression,replacement):
 
 def updateREADME():
     bumpversion = getVersion()
-    data=getData('../README.md',r'v\d+\.\d+\.\d+',bumpversion)
-    with open ('../README.md', 'w') as newfile:
+    data=getData('README.md',r'v\d+\.\d+\.\d+',bumpversion)
+    with open ('README.md', 'w') as newfile:
         newfile.write(data)
 
 def updateCHANGELOG():
     bumpversion = getVersion()
-    data=getData('../CHANGELOG.md',r'UNRELEASED',bumpversion)
-    with open ('../CHANGELOG.md', 'w') as newfile:
+    data=getData('CHANGELOG.md',r'UNRELEASED',bumpversion)
+    with open ('CHANGELOG.md', 'w') as newfile:
         newfile.write(data)
 
 def updateMaintf():
     bumpversion = getVersion()
     replacement = "source = " + "\"git::https://github.com/jmgreg31/terraform-aws-cloudfront.git?ref={}\"".format(bumpversion)
-    data=getData('main.tf',r'source[ \t]+\=.*',replacement)
-    with open ('main.tf', 'w') as newfile:
+    data=getData('example/main.tf',r'source[ \t]+\=.*',replacement)
+    with open ('example/main.tf', 'w') as newfile:
         newfile.write(data)
-    os.system('./terraform fmt')
+    os.system('./terraform fmt example/')
 
 def updateGit():
     bumpversion = getVersion()
-    os.system('git config --global user.email \"travis@travis-ci.org\" && \
-               git config --global user.name "Travis CI"')
+    os.system('git config --global user.email \"jmgreg31@gmail.com\" && \
+               git config --global user.name "Jon Greg"')
     os.system('git checkout master')
-    os.system('git add ../README.md ../CHANGELOG.md main.tf terraform.tfvars')
-    os.system('git commit -m "Bump Version to {} [skip ci]"'.format(bumpversion))
+    os.system('git add README.md CHANGELOG.md example/main.tf example/terraform.tfvars')
+    os.system('git commit -m "Bump Version to {}"'.format(bumpversion))
     os.system('git remote set-url origin https://jmgreg31:${GH_TOKEN}@github.com/jmgreg31/terraform-aws-cloudfront.git > /dev/null 2>&1')
     os.system('git push origin master')
 
