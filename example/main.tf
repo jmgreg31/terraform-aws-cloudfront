@@ -211,7 +211,7 @@ provider "aws" {
 }
 
 module "demo_cf" {
-  source                         = "git::https://github.com/jmgreg31/terraform-aws-cloudfront.git?ref=v4.3.6"
+  source                         = "git::https://github.com/jmgreg31/terraform-aws-cloudfront.git?ref=staging"
   create_cf                      = var.create_cf
   acm_certificate_arn            = var.acm_certificate_arn
   additional_tags                = var.additional_tags
