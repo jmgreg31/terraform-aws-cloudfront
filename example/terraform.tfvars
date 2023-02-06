@@ -105,14 +105,14 @@ dynamic_default_cache_behavior = [
     lambda_function_association = [
       {
         event_type   = "viewer-request"
-        lambda_arn   = "YOUR LAMBDA ARN"
+        lambda_arn   = "arn:aws:lambda:us-east-1:123456789012:function:my-function"
         include_body = true
       }
     ]
     function_association = [
       {
         event_type   = "viewer-request"
-        function_arn = "YOUR CF FUNCTION ARN"
+        function_arn = "arn:aws:cloudfront::123456789012:function/my-cf-function"
       }
     ]
   }
@@ -135,12 +135,12 @@ dynamic_ordered_cache_behavior = [
     lambda_function_association = [
       {
         event_type   = "viewer-request"
-        lambda_arn   = "YOUR LAMBDA ARN"
+        lambda_arn   = "arn:aws:lambda:us-east-1:123456789012:function:my-function"
         include_body = true
       },
       {
         event_type   = "viewer-response"
-        lambda_arn   = "YOUR LAMBDA ARN2"
+        lambda_arn   = "arn:aws:lambda:us-east-1:123456789012:function:my-function2"
         include_body = true
       }
     ]
