@@ -210,7 +210,7 @@ provider "aws" {
   region  = var.region
 }
 
-module demo_cf {
+module "demo_cf" {
   source                         = "git::https://github.com/jmgreg31/terraform-aws-cloudfront.git?ref=staging"
   create_cf                      = var.create_cf
   acm_certificate_arn            = var.acm_certificate_arn
