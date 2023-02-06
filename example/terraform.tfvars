@@ -99,6 +99,7 @@ dynamic_default_cache_behavior = [
     cookies_forward        = "all"
     headers                = ["*"]
     viewer_protocol_policy = "redirect-to-https"
+    response_headers_policy_id = "e61eb60c-9c35-4d20-a928-2b84e02af89c"
     min_ttl                = 0
     default_ttl            = 0
     max_ttl                = 0
