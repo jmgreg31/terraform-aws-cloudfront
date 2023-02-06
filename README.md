@@ -1,9 +1,5 @@
 [![Build Status](https://travis-ci.com/jmgreg31/terraform-aws-cloudfront.svg?branch=master)](https://travis-ci.com/jmgreg31/terraform-aws-cloudfront)
-<<<<<<< HEAD
 [![Latest Release](https://img.shields.io/badge/release-v4.3.7-blue.svg)](https://github.com/jmgreg31/terraform-aws-cloudfront/releases/tag/v4.3.7)
-=======
-[![Latest Release](https://img.shields.io/badge/release-v4.3.6-blue.svg)](https://github.com/jmgreg31/terraform-aws-cloudfront/releases/tag/v4.3.6)
->>>>>>> Feature/test gh action (#45)
 
 # Terraform Cloudfront Module
 
