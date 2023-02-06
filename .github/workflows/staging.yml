@@ -16,6 +16,12 @@ jobs:
     name: Terraform
     environment: TERRAFORM_STAGING
     steps:
+    - name: Check-Out
+      uses: actions/checkout@v2
+      with:
+        repository: jmgreg31/terraform-aws-cloudfront
+        token: ${{ secrets.GH_TOKEN }}
+        path: ${{ env.WORK_DIR }}
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
       with:
