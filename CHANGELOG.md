@@ -1,4 +1,4 @@
-## UNRELEASED (February 2023)
+## v4.3.6 (February 2023)
 
 * Update `default_cache_behavior` and `dynamic_ordered_cache_behavior` with ability to accept `response_headers_policy_id`(UUID) parameter.
 
