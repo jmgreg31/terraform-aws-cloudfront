@@ -158,6 +158,7 @@ dynamic_ordered_cache_behavior = [
     min_ttl                = 0
     default_ttl            = 0
     max_ttl                = 0
+    response_headers_policy_id = "60669652-455b-4ae9-85a4-c4c02393f86c"
   }
 ]
 
