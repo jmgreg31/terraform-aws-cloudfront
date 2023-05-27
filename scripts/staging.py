@@ -1,6 +1,8 @@
 import os
 import re
 
+WORK_DIR = os.getenv("WORK_DIR")
+
 
 def update_file(path: str, expression: str, replacement: str) -> None:
     with open(path, "r") as readme:
@@ -12,7 +14,7 @@ def update_file(path: str, expression: str, replacement: str) -> None:
 
 def update_example() -> None:
     replacement = "source = ../"
-    update_file("example/main.tf", r"source[ \t]+\=.*", replacement)
+    update_file(f"{WORK_DIR}/example/main.tf", r"source[ \t]+\=.*", replacement)
     os.system("./terraform fmt example/")
 
 
