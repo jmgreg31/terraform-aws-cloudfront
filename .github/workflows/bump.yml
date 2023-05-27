@@ -19,14 +19,19 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
           path: ${{ env.WORK_DIR }}
 
-      - name: Bump Version
+      - name: Download Terraform
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           cd ${{ env.WORK_DIR }}
           wget https://releases.hashicorp.com/terraform/0.13.1/terraform_0.13.1_linux_amd64.zip
           unzip terraform_0.13.1_linux_amd64.zip
-          python scripts/bump.py
+        shell: bash
+
+      - name: Bump Version
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: python ${{ env.WORK_DIR }}/scripts/bump.py
         shell: bash
 
       # Use [norelease] or release:major | minor | patch to override

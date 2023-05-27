@@ -44,7 +44,7 @@ def update_example() -> None:
     data = get_data(f"{WORK_DIR}/example/main.tf", r"source[ \t]+\=.*", replacement)
     with open(f"{WORK_DIR}/example/main.tf", "w") as newfile:
         newfile.write(data)
-    os.system(f"./terraform fmt {WORK_DIR}/example/")
+    os.system(f"{WORK_DIR}/terraform fmt {WORK_DIR}/example/")
 
 
 def push_changes() -> None:
