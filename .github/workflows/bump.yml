@@ -26,7 +26,7 @@ jobs:
           cd ${{ env.WORK_DIR }}
           wget https://releases.hashicorp.com/terraform/0.13.1/terraform_0.13.1_linux_amd64.zip
           unzip terraform_0.13.1_linux_amd64.zip
-          python bump.py
+          python scripts/bump.py
         shell: bash
 
       # Use [norelease] or release:major | minor | patch to override
