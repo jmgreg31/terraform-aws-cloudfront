@@ -1,5 +1,7 @@
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD041 -->
 [![Build Status](https://travis-ci.com/jmgreg31/terraform-aws-cloudfront.svg?branch=master)](https://travis-ci.com/jmgreg31/terraform-aws-cloudfront)
-[![Latest Release](https://img.shields.io/badge/release-v4.3.6-blue.svg)](https://github.com/jmgreg31/terraform-aws-cloudfront/releases/tag/v4.3.6)
+[![Latest Release](https://img.shields.io/badge/release-v4.3.7-blue.svg)](https://github.com/jmgreg31/terraform-aws-cloudfront/releases/tag/v4.3.7)
 
 # Terraform Cloudfront Module
 
