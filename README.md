@@ -1,6 +1,6 @@
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD041 -->
-[![Build Status](https://github.com/jmgreg31/terraform-aws-cloudfront/actions/workflows/bump.yml/badge.svg?event=push)](https://github.com/jmgreg31/terraform-aws-cloudfront/actions/workflows/bump.yml/badge.svg?event=push)
+![Build Status](https://github.com/jmgreg31/terraform-aws-cloudfront/actions/workflows/bump.yml/badge.svg?event=push)
 [![Latest Release](https://img.shields.io/badge/release-v4.3.8-blue.svg)](https://github.com/jmgreg31/terraform-aws-cloudfront/releases/tag/v4.3.8)
 
 # Terraform Cloudfront Module
