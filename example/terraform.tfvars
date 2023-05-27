@@ -146,18 +146,18 @@ dynamic_ordered_cache_behavior = [
     ]
   },
   {
-    path_pattern           = "/test2/"
-    allowed_methods        = ["GET", "HEAD"]
-    cached_methods         = ["GET", "HEAD"]
-    target_origin_id       = "S3-domain-cert"
-    compress               = false
-    query_string           = true
-    cookies_forward        = "all"
-    headers                = []
-    viewer_protocol_policy = "redirect-to-https"
-    min_ttl                = 0
-    default_ttl            = 0
-    max_ttl                = 0
+    path_pattern               = "/test2/"
+    allowed_methods            = ["GET", "HEAD"]
+    cached_methods             = ["GET", "HEAD"]
+    target_origin_id           = "S3-domain-cert"
+    compress                   = false
+    query_string               = true
+    cookies_forward            = "all"
+    headers                    = []
+    viewer_protocol_policy     = "redirect-to-https"
+    min_ttl                    = 0
+    default_ttl                = 0
+    max_ttl                    = 0
     response_headers_policy_id = "60669652-455b-4ae9-85a4-c4c02393f86c"
   }
 ]

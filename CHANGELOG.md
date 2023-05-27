@@ -1,5 +1,5 @@
 <!-- markdownlint-disable MD041 -->
-## UNRELEASED (May 2023)
+## v4.3.8 (May 2023)
 
 * Simplify Contribution Workflow
 * Fix GitHub Actions
