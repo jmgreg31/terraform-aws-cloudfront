@@ -1,11 +1,9 @@
 import os
 import re
 
-CWD = os.getcwd()
-
 
 def get_version() -> str:
-    with open(f"{CWD}/VERSION", "r") as version:
+    with open("VERSION", "r") as version:
         for line in version:
             output = line
             bumpversion = "v" + output
@@ -21,15 +19,15 @@ def get_data(path: str, expression: str, replacement: str) -> str:
 
 def update_readme() -> None:
     bumpversion = get_version()
-    data = get_data(f"{CWD}/README.md", r"v\d+\.\d+\.\d+", bumpversion)
+    data = get_data("README.md", r"v\d+\.\d+\.\d+", bumpversion)
     with open("README.md", "w") as newfile:
         newfile.write(data)
 
 
 def update_changelog() -> None:
     bumpversion = get_version()
-    data = get_data(f"{CWD}/CHANGELOG.md", r"UNRELEASED", bumpversion)
-    with open(f"{CWD}/CHANGELOG.md", "w") as newfile:
+    data = get_data("CHANGELOG.md", r"UNRELEASED", bumpversion)
+    with open("CHANGELOG.md", "w") as newfile:
         newfile.write(data)
 
 
@@ -41,8 +39,8 @@ def update_example() -> None:
             bumpversion
         )
     )
-    data = get_data(f"{CWD}/example/main.tf", r"source[ \t]+\=.*", replacement)
-    with open(f"{CWD}/example/main.tf", "w") as newfile:
+    data = get_data("example/main.tf", r"source[ \t]+\=.*", replacement)
+    with open("example/main.tf", "w") as newfile:
         newfile.write(data)
     os.system("./terraform fmt example/")
 

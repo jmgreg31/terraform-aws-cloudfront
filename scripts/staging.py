@@ -1,8 +1,6 @@
 import os
 import re
 
-CWD = os.getcwd()
-
 
 def update_file(path: str, expression: str, replacement: str) -> None:
     with open(path, "r") as readme:
@@ -14,7 +12,7 @@ def update_file(path: str, expression: str, replacement: str) -> None:
 
 def update_example() -> None:
     replacement = "source = ../"
-    update_file(f"{CWD}/example/main.tf", r"source[ \t]+\=.*", replacement)
+    update_file("example/main.tf", r"source[ \t]+\=.*", replacement)
     os.system("./terraform fmt example/")
 
 
