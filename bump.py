@@ -1,5 +1,18 @@
+import logging
 import os
 import re
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+
+
+def should_bump() -> bool:
+    title = os.getenv("PR_TITLE")
+    logger.debug(f"PR TITLE: {title}")
+    if "skipversion" in title:
+        logger.info("Skipping Version Bump")
+        return False
+    return True
 
 
 def get_version() -> str:
@@ -61,7 +74,8 @@ def push_changes() -> None:
 
 
 if __name__ == "__main__":
-    update_readme()
-    update_changelog()
-    update_example()
-    push_changes()
+    if should_bump():
+        update_readme()
+        update_changelog()
+        update_example()
+        push_changes()
