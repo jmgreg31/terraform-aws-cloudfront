@@ -2,7 +2,7 @@ name: Terraform - Staging
 on:
   pull_request:
     branches:
-      - "staging"
+      - "master"
 env:
   WORK_DIR: terraform-cloudfront
 
