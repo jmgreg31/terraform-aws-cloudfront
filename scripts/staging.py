@@ -15,7 +15,7 @@ def update_file(path: str, expression: str, replacement: str) -> None:
 def update_example() -> None:
     replacement = 'source = "../"'
     update_file(f"{WORK_DIR}/example/main.tf", r"source[ \t]+\=.*", replacement)
-    os.system("terraform fmt example/")
+    os.system(f"terraform fmt {WORK_DIR}/example/")
 
 
 if __name__ == "__main__":
