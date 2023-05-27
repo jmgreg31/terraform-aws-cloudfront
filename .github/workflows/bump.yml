@@ -33,6 +33,6 @@ jobs:
       - name: Release
         uses: rymndhng/release-on-push-action@v0.28.0
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           bump_version_scheme: patch
