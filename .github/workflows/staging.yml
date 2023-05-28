@@ -28,15 +28,12 @@ jobs:
         with:
           terraform_version: 0.13.1
           terraform_wrapper: false
-      - name: Terraform Format
-        id: fmt
-        run: terraform fmt
-        continue-on-error: true
-        shell: bash
-      - name: Terraform Setup
-        id: setup
+
+      - name: Staging Init
+        id: staging
         run: python ${{ env.WORK_DIR }}/scripts/staging.py
         shell: bash
+
       - name: Terraform Init
         id: init
         run: |
@@ -46,6 +43,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         shell: bash
+
       - name: Terraform Plan
         id: plan
         run: |
