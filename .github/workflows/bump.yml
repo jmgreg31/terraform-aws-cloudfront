@@ -5,7 +5,7 @@ on:
       - "master"
 env:
   WORK_DIR: terraform-cloudfront
-  SCRIPTS_DIR: terraform-cloudfront/scripts
+  SCRIPTS_DIR: terraform-cloudfront/.github/scripts
 
 jobs:
   version-bump:
