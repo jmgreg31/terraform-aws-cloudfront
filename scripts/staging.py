@@ -1,6 +1,6 @@
 import os
 
-from ..scripts.helpers import FileHandler, FileObject, UpdateFile
+from .helpers import FileHandler, FileObject, UpdateFile
 
 WORK_DIR = os.getenv("WORK_DIR")
 
