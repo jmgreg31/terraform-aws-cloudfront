@@ -1,6 +1,9 @@
 import os
 
 from helpers import FileHandler, FileObject, UpdateFile
+from logger import CustomLogger
+
+LOG = CustomLogger("staging")
 
 WORK_DIR = os.getenv("WORK_DIR")
 

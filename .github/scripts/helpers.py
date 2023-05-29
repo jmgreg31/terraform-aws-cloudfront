@@ -1,4 +1,3 @@
-import logging
 import os
 import re
 import traceback
@@ -7,11 +6,9 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import requests
+from logger import CustomLogger
 
-logging.basicConfig(
-    level=logging.INFO, format="%(levelname)s: %(asctime)s | %(message)s"
-)
-LOG = logging.getLogger("helpers")
+LOG = CustomLogger("helpers")
 WORK_DIR = os.getenv("WORK_DIR", os.getcwd())
 TOKEN = os.getenv("GH_TOKEN")
 ORG = "jmgreg31"

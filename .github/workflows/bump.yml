@@ -36,10 +36,10 @@ jobs:
         run: python ${{ env.SCRIPTS_DIR }}/bump.py
         shell: bash
 
-      # # Use [norelease] or release:major | minor | patch to override
-      # - name: Release
-      #   uses: rymndhng/release-on-push-action@v0.28.0
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-      #   with:
-      #     bump_version_scheme: patch
+      # Use [norelease] or release:major | minor | patch to override
+      - name: Release
+        uses: rymndhng/release-on-push-action@v0.28.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          bump_version_scheme: patch

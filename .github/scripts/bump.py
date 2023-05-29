@@ -1,12 +1,9 @@
-import logging
 import os
 
 from helpers import FileContext, FileHandler, FileObject, UpdateFile
+from logger import CustomLogger
 
-logging.basicConfig(
-    level=logging.INFO, format="%(levelname)s: %(asctime)s | %(message)s"
-)
-LOG = logging.getLogger("build")
+LOG = CustomLogger("build")
 WORK_DIR = os.getenv("WORK_DIR", os.getcwd())
 TOKEN = os.getenv("GH_TOKEN")
 ORG = "jmgreg31"
@@ -70,31 +67,10 @@ class BumpHandler(FileHandler):
             os.system("git add example/main.tf")
             os.system("git add example/terraform.tfvars")
             os.system(f'git commit -m "(ci): Bump Version to {self.version}"')
-            # if not self.dry_run:
-            #     os.system("git push origin master")
-            # else:
-            #     LOG.info(f"Version {self.version} is the latest release")
-
-            # os.system(f"{WORK_DIR}/terraform fmt {WORK_DIR}/example/ > /dev/null 2>&1")
-            # os.system('git config --global user.email "jmgreg31@gmail.com"')
-            # os.system('git config --global user.name "Jon Greg"')
-            # os.system("git config --global init.defaultBranch master")
-            # os.system(f"cd {WORK_DIR} && git init")
-            # os.system(
-            #     f"cd {WORK_DIR} && git remote add origin https://jmgreg31:{TOKEN}@github.com/{ORG}/{REPO}.git > /dev/null 2>&1"
-            # )
-            # # os.system("git checkout master")
-            # os.system(f"cd {WORK_DIR} && git add README.md")
-            # os.system(f"cd {WORK_DIR} && git add CHANGELOG.md")
-            # os.system(f"cd {WORK_DIR} && git add example/main.tf")
-            # os.system(f"cd {WORK_DIR} && git add example/terraform.tfvars")
-            # os.system(
-            #     f'cd {WORK_DIR} && git commit -m "(ci): Bump Version to {self.version}"'
-            # )
-            # if not self.dry_run:
-            #     os.system(f"cd {WORK_DIR} && git push origin master")
-            # else:
-            #     LOG.info(f"Version {self.version} is the latest release")
+            if not self.dry_run:
+                os.system("git push origin master")
+            else:
+                LOG.info(f"Version {self.version} is the latest release")
 
 
 def main():
