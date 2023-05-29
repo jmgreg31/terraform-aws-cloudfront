@@ -1,7 +1,29 @@
 import os
 import re
 
-WORK_DIR = os.getenv("WORK_DIR")
+import requests
+
+WORK_DIR = os.getenv("WORK_DIR", os.getcwd())
+TOKEN = os.getenv("GH_TOKEN")
+ORG = "jmgreg31"
+REPO = "terraform-aws-cloudfront"
+
+
+class GitHubClient:
+    def __init__(self) -> None:
+        self.base_url = "https://api.github.com"
+
+    def _get_headers(self) -> dict:
+        return {
+            f"Authorization": f"Bearer {TOKEN}",
+            "Accept": "application/vnd.github.v3+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+        }
+
+    def get_latest_release(self) -> str:
+        url = f"{self.base_url}/repos/{ORG}/{REPO}/releases/latest"
+        response = requests.get(url, headers=self._get_headers())
+        return response.json()["tag_name"]
 
 
 def get_version() -> str:
@@ -12,58 +34,57 @@ def get_version() -> str:
     return bumpversion.rstrip()
 
 
-def get_data(path: str, expression: str, replacement: str) -> str:
-    with open(path, "r") as readme:
-        data = readme.read()
-        data = re.sub(expression, replacement, data)
-    return data
+def update_file(path: str, expression: str, replacement: str) -> None:
+    with open(path, "r") as read_file:
+        current_content = read_file.read()
+        new_content = re.sub(expression, replacement, current_content)
+    with open(path, "w") as write_file:
+        write_file.write(new_content)
 
 
-def update_readme() -> None:
-    bumpversion = get_version()
-    data = get_data(f"{WORK_DIR}/README.md", r"v\d+\.\d+\.\d+", bumpversion)
-    with open("README.md", "w") as newfile:
-        newfile.write(data)
-
-
-def update_changelog() -> None:
-    bumpversion = get_version()
-    data = get_data(f"{WORK_DIR}/CHANGELOG.md", r"UNRELEASED", bumpversion)
-    with open(f"{WORK_DIR}/CHANGELOG.md", "w") as newfile:
-        newfile.write(data)
-
-
-def update_example() -> None:
-    bumpversion = get_version()
-    replacement = (
+def file_handler(version: str) -> None:
+    tf_replace = (
         "source = "
         + '"git::https://github.com/jmgreg31/terraform-aws-cloudfront.git?ref={}"'.format(
-            bumpversion
+            version
         )
     )
-    data = get_data(f"{WORK_DIR}/example/main.tf", r"source[ \t]+\=.*", replacement)
-    with open(f"{WORK_DIR}/example/main.tf", "w") as newfile:
-        newfile.write(data)
+    file_list = [
+        (f"{WORK_DIR}/README.md", r"v\d+\.\d+\.\d+", version),
+        (f"{WORK_DIR}/CHANGELOG.md", r"UNRELEASED", version),
+        (f"{WORK_DIR}/example/main.tf", r"source[ \t]+\=.*", tf_replace),
+    ]
+    for file in file_list:
+        update_file(file[0], file[1], file[2])
+
+
+def push_changes(version: str, dry_run: bool) -> None:
     os.system(f"{WORK_DIR}/terraform fmt {WORK_DIR}/example/")
-
-
-def push_changes() -> None:
-    bumpversion = get_version()
     os.system(
         'git config --global user.email "jmgreg31@gmail.com" && \
                git config --global user.name "Jon Greg"'
     )
     os.system("git checkout master")
-    os.system("git add README.md CHANGELOG.md example/main.tf example/terraform.tfvars")
-    os.system('git commit -m "(ci): Bump Version to {}"'.format(bumpversion))
+    os.system(
+        f"git add {WORK_DIR}/README.md {WORK_DIR}/CHANGELOG.md {WORK_DIR}/example/main.tf {WORK_DIR}/example/terraform.tfvars"
+    )
+    os.system(f'git commit -m "(ci): Bump Version to {version}"')
     os.system(
         "git remote set-url origin https://jmgreg31:${GH_TOKEN}@github.com/jmgreg31/terraform-aws-cloudfront.git > /dev/null 2>&1"
     )
-    os.system("git push origin master")
+    if not dry_run:
+        os.system("git push origin master")
+    else:
+        print(f"Version {version} is the latest release")
+
+
+def main():
+    bump_version = get_version()
+    latest_version = GitHubClient().get_latest_release()
+    dry_run = bump_version == latest_version
+    file_handler(bump_version)
+    push_changes(bump_version, dry_run)
 
 
 if __name__ == "__main__":
-    update_readme()
-    update_changelog()
-    update_example()
-    push_changes()
+    main()

@@ -5,11 +5,11 @@ WORK_DIR = os.getenv("WORK_DIR")
 
 
 def update_file(path: str, expression: str, replacement: str) -> None:
-    with open(path, "r") as readme:
-        data = readme.read()
-        data = re.sub(expression, replacement, data)
-    with open(path, "w") as newfile:
-        newfile.write(data)
+    with open(path, "r") as read_file:
+        current_content = read_file.read()
+        new_content = re.sub(expression, replacement, current_content)
+    with open(path, "w") as write_file:
+        write_file.write(new_content)
 
 
 def update_example() -> None:

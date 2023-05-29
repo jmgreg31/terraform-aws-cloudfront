@@ -5,7 +5,7 @@
 
 # Terraform Cloudfront Module
 
-This is a module to build a cloudfront distribution.  It has been modularized to accept multiple origins, behaviors, and custom error responses.  Please reference the [Example](https://github.com/jmgreg31/terraform-aws-cloudfront/tree/master/example) folder for an example of this module in action
+This is a module to build a cloudfront distribution.  It has been modularized to accept multiple origins, behaviors, and custom error responses.  Please reference the [Example](https://github.com/jmgreg31/terraform-aws-cloudfront/tree/master/example) folder for an example of this module in action. Note: The example is used directly for integration testing
 
 ## Notes
 

@@ -17,7 +17,7 @@ jobs:
     environment: TERRAFORM_STAGING
     steps:
       - name: Check-Out
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: jmgreg31/terraform-aws-cloudfront
           token: ${{ secrets.GITHUB_TOKEN }}
