@@ -25,6 +25,7 @@ class GitHubClient:
     def get_latest_release(self) -> str:
         url = f"{self.base_url}/repos/{ORG}/{REPO}/releases/latest"
         response = requests.get(url, headers=self._get_headers())
+        print(response.json())
         return response.json()["tag_name"]
 
 
