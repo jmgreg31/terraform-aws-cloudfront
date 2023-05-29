@@ -1,5 +1,5 @@
 <!-- markdownlint-disable MD041 -->
-## UNRELEASED (May 2023)
+## v4.3.9 (May 2023)
 
 * Refactor GitHub Actions and script structure
 * Enhancements to GitHub Actions Workflow
