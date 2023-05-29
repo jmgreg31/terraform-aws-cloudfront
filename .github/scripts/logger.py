@@ -32,8 +32,7 @@ class CustomLogger:
 
     def log(self):
         """
-        Standardized logger for the project.  Configured to handle deduplication
-        when logging to lambda.
+        Standardized logger for the project.
         Returns:
             Logger
         """
@@ -75,9 +74,8 @@ class CustomLogger:
 
     def get_message(self, message, details: Optional[Union[list, dict]] = None):
         """
-        Format the message.  Gets the aws_request_id if available and appends
-        it to the message.  Also handles json serialization to appear pretty
-        printed in the lambda logs
+        Format the message. Also handles json serialization to appear pretty
+        printed in the logs
         Args:
             message `str`: The log message
             details `Optional[Union[list, dict]]`: Additional log details
