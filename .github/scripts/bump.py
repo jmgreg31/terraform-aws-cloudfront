@@ -1,7 +1,7 @@
 import logging
 import os
 
-from helpers import FileHandler, FileObject, UpdateFile
+from helpers import FileContext, FileHandler, FileObject, UpdateFile
 
 logging.basicConfig(
     level=logging.INFO, format="%(levelname)s: %(asctime)s | %(message)s"
@@ -55,7 +55,7 @@ class BumpHandler(FileHandler):
         return file_changes
 
     def push_file_changes(self) -> None:
-        with os.chdir(WORK_DIR):
+        with FileContext(WORK_DIR):
             os.system("terraform fmt example/ > /dev/null 2>&1")
             os.system('git config --global user.email "jmgreg31@gmail.com"')
             os.system('git config --global user.name "Jon Greg"')

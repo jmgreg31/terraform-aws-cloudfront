@@ -105,3 +105,15 @@ class FileHandler(ABC):
         for file in file_list:
             self.update_file(file)
         self.push_file_changes()
+
+
+class FileContext:
+    def __init__(self, path: str):
+        self.path = path
+        self.origin = os.getcwd()
+
+    def __enter__(self):
+        os.chdir(self.path)
+
+    def __exit__(self):
+        os.chdir(self.origin)
