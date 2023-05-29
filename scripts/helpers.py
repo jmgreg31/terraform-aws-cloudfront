@@ -25,8 +25,9 @@ class GitHubClient:
     def get_latest_release(self) -> str:
         url = f"{self.base_url}/repos/{ORG}/{REPO}/releases/latest"
         response = requests.get(url, headers=self._get_headers())
-        print(response.json())
-        return response.json()["tag_name"]
+        latest_version = response.json()["tag_name"]
+        print(f"Latest Version: {latest_version}")
+        return latest_version
 
 
 @dataclass
@@ -82,7 +83,9 @@ class FileHandler(ABC):
             for line in version:
                 output = line
                 bumpversion = f"v{output}"
-        return bumpversion.rstrip()
+        proposed_version = bumpversion.rstrip()
+        print(f"Proposed Version: {proposed_version}")
+        return proposed_version
 
     @abstractmethod
     def get_file_changes(self) -> list[FileObject]:

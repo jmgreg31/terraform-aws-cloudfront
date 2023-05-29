@@ -5,6 +5,7 @@ on:
       - "master"
 env:
   WORK_DIR: terraform-cloudfront
+  SCRIPTS_DIR: ${{ env.WORK_DIR }}/scripts
 
 jobs:
   version-bump:
@@ -28,17 +29,10 @@ jobs:
           unzip terraform_0.13.1_linux_amd64.zip
         shell: bash
 
-      - name: Setup Pipenv
-        id: pipenv
-        run: |
-          cp Pipfile ${{ env.WORK_DIR }} && cp Pipfile.lock ${{ env.WORK_DIR }}
-          pipenv sync
-        shell: bash
-
       - name: Bump Version
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: python ${{ env.WORK_DIR }}/scripts/bump.py
+        run: python ${{ env.SCRIPTS_DIR }}/bump.py
         shell: bash
 
       # Use [norelease] or release:major | minor | patch to override
