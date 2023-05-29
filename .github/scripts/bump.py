@@ -20,13 +20,13 @@ class UpdateReadme(UpdateFile):
 
 
 class UpdateChangeLog(UpdateFile):
-    def file_path(self) -> str:
+    def get_path(self) -> str:
         return f"{WORK_DIR}/CHANGELOG.md"
 
-    def search(self) -> str:
+    def get_search(self) -> str:
         return r"UNRELEASED"
 
-    def version(self) -> str:
+    def get_sub(self) -> str:
         return self.version
 
 
