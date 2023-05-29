@@ -26,7 +26,7 @@ class StagingHandler(FileHandler):
         return file_changes
 
     def push_file_changes(self) -> None:
-        print("No files to push for Staging Workflow")
+        LOG.info("No files to push for Staging Workflow")
 
 
 def main():

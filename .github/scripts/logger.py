@@ -68,6 +68,7 @@ class CustomLogger:
             fmt="%(levelname)s | %(asctime)s [%(name)s] - %(message)s",
             level=self.log_level,
             logger=logger,
+            isatty=True,
         )
         logger.propagate = self.propagate
         return logger
