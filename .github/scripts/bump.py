@@ -55,9 +55,9 @@ class BumpHandler(FileHandler):
         os.system('git config --global user.email "jmgreg31@gmail.com"')
         os.system('git config --global user.name "Jon Greg"')
         os.system(
-            f"git remote set-url origin https://jmgreg31:{TOKEN}@github.com/{ORG}/{REPO}.git > /dev/null 2>&1"
+            f"git remote add origin https://jmgreg31:{TOKEN}@github.com/{ORG}/{REPO}.git > /dev/null 2>&1"
         )
-        os.system("git checkout master")
+        # os.system("git checkout master")
         os.system(f"git add {WORK_DIR}/README.md")
         os.system(f"git add {WORK_DIR}/CHANGELOG.md")
         os.system(f"git add {WORK_DIR}/example/main.tf")
