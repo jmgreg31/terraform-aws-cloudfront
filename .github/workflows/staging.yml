@@ -31,6 +31,8 @@ jobs:
 
       - name: Staging Init
         id: staging
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: python ${{ env.WORK_DIR }}/scripts/staging.py
         shell: bash
 
