@@ -51,20 +51,18 @@ class BumpHandler(FileHandler):
 
     def push_file_changes(self) -> None:
         os.system(f"{WORK_DIR}/terraform fmt {WORK_DIR}/example/")
-        print("config")
+        os.system("git init")
         os.system('git config --global user.email "jmgreg31@gmail.com"')
         os.system('git config --global user.name "Jon Greg"')
-        print("CHECKOUT")
+        os.system(
+            f"git remote set-url origin https://jmgreg31:{TOKEN}@github.com/{ORG}/{REPO}.git > /dev/null 2>&1"
+        )
         os.system("git checkout master")
-        print("ADD")
         os.system(f"git add {WORK_DIR}/README.md")
         os.system(f"git add {WORK_DIR}/CHANGELOG.md")
         os.system(f"git add {WORK_DIR}/example/main.tf")
         os.system(f"git add {WORK_DIR}/example/terraform.tfvars")
         os.system(f'git commit -m "(ci): Bump Version to {self.version}"')
-        os.system(
-            f"git remote set-url origin https://jmgreg31:{TOKEN}@github.com/{ORG}/{REPO}.git > /dev/null 2>&1"
-        )
         if not self.dry_run:
             os.system("git push origin master")
         else:
