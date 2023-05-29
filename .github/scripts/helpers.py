@@ -3,6 +3,7 @@ import os
 import re
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
+from pathlib import Path
 
 import requests
 
@@ -110,7 +111,7 @@ class FileHandler(ABC):
 class FileContext:
     def __init__(self, path: str):
         self.path = path
-        self.origin = os.getcwd()
+        self.origin = Path.absolute()
 
     def __enter__(self):
         os.chdir(self.path)
