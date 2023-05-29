@@ -25,7 +25,7 @@ class JsonHelper(json.JSONEncoder):
 
 class CustomLogger:
     log_level = os.getenv("LOG_LEVEL", "INFO")
-    propagate = True
+    propagate = False
 
     def __init__(self, name: str):
         self.name = name
@@ -65,7 +65,7 @@ class CustomLogger:
                 "levelname": {"bold": True, "color": "blue"},
             }
         coloredlogs.install(
-            fmt="%(levelname)s | %(asctime)s [ %(name)s] - %(message)s",
+            fmt="%(levelname)s | %(asctime)s [%(name)s] - %(message)s",
             level=self.log_level,
             logger=logger,
         )
