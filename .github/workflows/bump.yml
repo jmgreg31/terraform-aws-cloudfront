@@ -2,8 +2,7 @@ name: Build
 on:
   push:
     branches:
-      - test
-      # - "master"
+      - master
 env:
   WORK_DIR: terraform-cloudfront
   SCRIPTS_DIR: terraform-cloudfront/.github/scripts
