@@ -38,7 +38,7 @@ jobs:
       - name: Bump Version
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: pipenv run python ${{ env.WORK_DIR }}/scripts/bump.py
+        run: python ${{ env.WORK_DIR }}/scripts/bump.py
         shell: bash
 
       # Use [norelease] or release:major | minor | patch to override
