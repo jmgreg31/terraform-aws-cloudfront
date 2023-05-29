@@ -6,7 +6,9 @@ from dataclasses import dataclass
 
 import requests
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=logging.INFO, format="%(levelname)s: %(asctime)s | %(message)s"
+)
 LOG = logging.getLogger("helpers")
 WORK_DIR = os.getenv("WORK_DIR", os.getcwd())
 TOKEN = os.getenv("GH_TOKEN")

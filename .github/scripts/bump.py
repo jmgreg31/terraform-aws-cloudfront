@@ -3,7 +3,9 @@ import os
 
 from helpers import FileHandler, FileObject, UpdateFile
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=logging.INFO, format="%(levelname)s: %(asctime)s | %(message)s"
+)
 LOG = logging.getLogger("build")
 WORK_DIR = os.getenv("WORK_DIR", os.getcwd())
 TOKEN = os.getenv("GH_TOKEN")
@@ -53,11 +55,14 @@ class BumpHandler(FileHandler):
         return file_changes
 
     def push_file_changes(self) -> None:
+        LOG.info("FORMAT")
         os.system(f"{WORK_DIR}/terraform fmt {WORK_DIR}/example/")
+        LOG.info("CONFIG")
         os.system('git config --global user.email "jmgreg31@gmail.com"')
         os.system('git config --global user.name "Jon Greg"')
         # os.system("git config --global init.defaultBranch master")
         # os.system("git init")
+        LOG.info("REMOTE")
         os.system(
             f"git remote add origin https://jmgreg31:{TOKEN}@github.com/{ORG}/{REPO}.git > /dev/null 2>&1"
         )
