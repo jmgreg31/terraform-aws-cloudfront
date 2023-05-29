@@ -5,6 +5,7 @@ on:
       - "master"
 env:
   WORK_DIR: terraform-cloudfront
+  SCRIPTS_DIR: terraform-cloudfront/.github/scripts
 
 jobs:
   version-bump:
@@ -13,7 +14,7 @@ jobs:
     environment: VERSION_BUMP
     steps:
       - name: Check-Out
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: jmgreg31/terraform-aws-cloudfront
           token: ${{ secrets.GH_TOKEN }}
@@ -31,7 +32,7 @@ jobs:
       - name: Bump Version
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: python ${{ env.WORK_DIR }}/scripts/bump.py
+        run: python ${{ env.SCRIPTS_DIR }}/bump.py
         shell: bash
 
       # Use [norelease] or release:major | minor | patch to override

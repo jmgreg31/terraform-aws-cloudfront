@@ -5,6 +5,7 @@ on:
       - "master"
 env:
   WORK_DIR: terraform-cloudfront
+  SCRIPTS_DIR: terraform-cloudfront/.github/scripts
 
 permissions:
   contents: read
@@ -17,10 +18,10 @@ jobs:
     environment: TERRAFORM_STAGING
     steps:
       - name: Check-Out
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: jmgreg31/terraform-aws-cloudfront
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
           path: ${{ env.WORK_DIR }}
 
       - name: Setup Terraform
@@ -31,7 +32,9 @@ jobs:
 
       - name: Staging Init
         id: staging
-        run: python ${{ env.WORK_DIR }}/scripts/staging.py
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: python ${{ env.SCRIPTS_DIR }}/staging.py
         shell: bash
 
       - name: Terraform Init
