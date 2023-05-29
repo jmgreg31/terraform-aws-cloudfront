@@ -3,6 +3,7 @@
 
 * Refactor GitHub Actions and script structure
 * Enhancements to GitHub Actions Workflow
+* Documentation Updates
 
 ## v4.3.8 (May 2023)
 
