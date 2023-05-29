@@ -30,9 +30,9 @@ jobs:
           terraform_wrapper: false
 
       - name: Setup Pipenv
-        id: pipenv
         run: |
-          cp Pipfile ${{ env.WORK_DIR }} && cp Pipfile.lock ${{ env.WORK_DIR }}
+          cp ${{ env.WORK_DIR }}/scripts/Pipfile ${{ env.WORK_DIR }}
+          cp ${{ env.WORK_DIR }}/scripts/Pipfile.lock ${{ env.WORK_DIR }}
           pipenv sync
         shell: bash
 
