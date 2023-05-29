@@ -51,9 +51,12 @@ class BumpHandler(FileHandler):
 
     def push_file_changes(self) -> None:
         os.system(f"{WORK_DIR}/terraform fmt {WORK_DIR}/example/")
+        print("config")
         os.system('git config --global user.email "jmgreg31@gmail.com"')
         os.system('git config --global user.name "Jon Greg"')
+        print("CHECKOUT")
         os.system("git checkout master")
+        print("ADD")
         os.system(f"git add {WORK_DIR}/README.md")
         os.system(f"git add {WORK_DIR}/CHANGELOG.md")
         os.system(f"git add {WORK_DIR}/example/main.tf")
