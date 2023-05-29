@@ -29,11 +29,8 @@ jobs:
           terraform_version: 0.13.1
           terraform_wrapper: false
 
-      - name: Setup Pipenv
-        run: |
-          cp ${{ env.WORK_DIR }}/scripts/Pipfile ${{ env.WORK_DIR }}
-          cp ${{ env.WORK_DIR }}/scripts/Pipfile.lock ${{ env.WORK_DIR }}
-          pipenv sync
+      - name: Python Setup
+        run: python -m pip install -r requirements.txt
         shell: bash
 
       - name: Staging Init
