@@ -1,3 +1,4 @@
+import logging
 import os
 import re
 from abc import ABC, abstractmethod
@@ -5,6 +6,8 @@ from dataclasses import dataclass
 
 import requests
 
+logging.basicConfig(level=logging.INFO)
+LOG = logging.getLogger("helpers")
 WORK_DIR = os.getenv("WORK_DIR", os.getcwd())
 TOKEN = os.getenv("GH_TOKEN")
 ORG = "jmgreg31"
@@ -26,7 +29,7 @@ class GitHubClient:
         url = f"{self.base_url}/repos/{ORG}/{REPO}/releases/latest"
         response = requests.get(url, headers=self._get_headers())
         latest_version = response.json()["tag_name"]
-        print(f"Latest Version: {latest_version}")
+        LOG.info(f"Latest Version: {latest_version}")
         return latest_version
 
 
@@ -84,7 +87,7 @@ class FileHandler(ABC):
                 output = line
                 bumpversion = f"v{output}"
         proposed_version = bumpversion.rstrip()
-        print(f"Proposed Version: {proposed_version}")
+        LOG.info(f"Proposed Version: {proposed_version}")
         return proposed_version
 
     @abstractmethod

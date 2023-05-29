@@ -1,7 +1,10 @@
+import logging
 import os
 
 from helpers import FileHandler, FileObject, UpdateFile
 
+logging.basicConfig(level=logging.INFO)
+LOG = logging.getLogger("build")
 WORK_DIR = os.getenv("WORK_DIR", os.getcwd())
 TOKEN = os.getenv("GH_TOKEN")
 ORG = "jmgreg31"
@@ -67,7 +70,7 @@ class BumpHandler(FileHandler):
         if not self.dry_run:
             os.system("git push origin master")
         else:
-            print(f"Version {self.version} is the latest release")
+            LOG.info(f"Version {self.version} is the latest release")
 
 
 def main():
