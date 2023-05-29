@@ -2,7 +2,8 @@ name: Build
 on:
   push:
     branches:
-      - "master"
+      - test
+      # - "master"
 env:
   WORK_DIR: terraform-cloudfront
   SCRIPTS_DIR: terraform-cloudfront/.github/scripts
@@ -32,7 +33,9 @@ jobs:
       - name: Bump Version
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: python ${{ env.SCRIPTS_DIR }}/bump.py
+        run: |
+          python -m pip install coloredlogs
+          python ${{ env.SCRIPTS_DIR }}/bump.py
         shell: bash
 
       # Use [norelease] or release:major | minor | patch to override

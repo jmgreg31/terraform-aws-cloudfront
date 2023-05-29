@@ -1,10 +1,14 @@
 import os
 import re
+import traceback
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
+from pathlib import Path
 
 import requests
+from logger import CustomLogger
 
+LOG = CustomLogger("helpers")
 WORK_DIR = os.getenv("WORK_DIR", os.getcwd())
 TOKEN = os.getenv("GH_TOKEN")
 ORG = "jmgreg31"
@@ -26,7 +30,7 @@ class GitHubClient:
         url = f"{self.base_url}/repos/{ORG}/{REPO}/releases/latest"
         response = requests.get(url, headers=self._get_headers())
         latest_version = response.json()["tag_name"]
-        print(f"Latest Version: {latest_version}")
+        LOG.info(f"Latest Version: {latest_version}")
         return latest_version
 
 
@@ -84,7 +88,7 @@ class FileHandler(ABC):
                 output = line
                 bumpversion = f"v{output}"
         proposed_version = bumpversion.rstrip()
-        print(f"Proposed Version: {proposed_version}")
+        LOG.info(f"Proposed Version: {proposed_version}")
         return proposed_version
 
     @abstractmethod
@@ -100,3 +104,17 @@ class FileHandler(ABC):
         for file in file_list:
             self.update_file(file)
         self.push_file_changes()
+
+
+class FileContext:
+    def __init__(self, path: str):
+        self.path = path
+        self.origin = Path().absolute()
+
+    def __enter__(self):
+        os.chdir(self.path)
+
+    def __exit__(self, exc_type, exc_value, tb):
+        if exc_type is not None:
+            LOG.info(traceback.format_exception(exc_type, exc_value, tb))
+        os.chdir(self.origin)
