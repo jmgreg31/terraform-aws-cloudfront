@@ -56,17 +56,19 @@ class BumpHandler(FileHandler):
 
     def push_file_changes(self) -> None:
         LOG.info("FORMAT")
-        os.system(f"{WORK_DIR}/terraform fmt {WORK_DIR}/example/")
+        os.system(f"{WORK_DIR}/terraform fmt {WORK_DIR}/example/ > /dev/null 2>&1")
         LOG.info("CONFIG")
         os.system('git config --global user.email "jmgreg31@gmail.com"')
         os.system('git config --global user.name "Jon Greg"')
-        # os.system("git config --global init.defaultBranch master")
-        # os.system("git init")
+        os.system("git config --global init.defaultBranch master")
+        LOG.info("INIT")
+        os.system("git init")
         LOG.info("REMOTE")
         os.system(
             f"git remote add origin https://jmgreg31:{TOKEN}@github.com/{ORG}/{REPO}.git > /dev/null 2>&1"
         )
         # os.system("git checkout master")
+        LOG.info("add")
         os.system(f"git add {WORK_DIR}/README.md")
         os.system(f"git add {WORK_DIR}/CHANGELOG.md")
         os.system(f"git add {WORK_DIR}/example/main.tf")
