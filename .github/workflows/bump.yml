@@ -28,10 +28,17 @@ jobs:
           unzip terraform_0.13.1_linux_amd64.zip
         shell: bash
 
+      - name: Setup Pipenv
+        id: pipenv
+        run: |
+          cp Pipfile ${{ env.WORK_DIR }} && cp Pipfile.lock ${{ env.WORK_DIR }}
+          pipenv sync
+        shell: bash
+
       - name: Bump Version
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: python ${{ env.WORK_DIR }}/scripts/bump.py
+        run: pipenv run python ${{ env.WORK_DIR }}/scripts/bump.py
         shell: bash
 
       # Use [norelease] or release:major | minor | patch to override

@@ -1,21 +1,34 @@
 import os
-import re
+
+from scripts.helpers import FileHandler, FileObject, UpdateFile
 
 WORK_DIR = os.getenv("WORK_DIR")
 
 
-def update_file(path: str, expression: str, replacement: str) -> None:
-    with open(path, "r") as read_file:
-        current_content = read_file.read()
-        new_content = re.sub(expression, replacement, current_content)
-    with open(path, "w") as write_file:
-        write_file.write(new_content)
+class UpdateExampleTerraform(UpdateFile):
+    def get_path(self) -> str:
+        return f"{WORK_DIR}/example/main.tf"
+
+    def get_search(self) -> str:
+        return r"source[ \t]+\=.*"
+
+    def get_sub(self) -> str:
+        return 'source = "../"'
 
 
-def update_example() -> None:
-    replacement = 'source = "../"'
-    update_file(f"{WORK_DIR}/example/main.tf", r"source[ \t]+\=.*", replacement)
+class StagingHandler(FileHandler):
+    def get_file_changes(self) -> list[FileObject]:
+        file_changes = []
+        file_changes.append(UpdateExampleTerraform(self.version).object)
+        return file_changes
+
+    def push_file_changes(self) -> None:
+        print("No files to push for Staging Workflow")
+
+
+def main():
+    StagingHandler().main_handler()
 
 
 if __name__ == "__main__":
-    update_example()
+    main()

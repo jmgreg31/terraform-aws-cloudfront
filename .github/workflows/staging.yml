@@ -29,9 +29,16 @@ jobs:
           terraform_version: 0.13.1
           terraform_wrapper: false
 
+      - name: Setup Pipenv
+        id: pipenv
+        run: |
+          cp Pipfile ${{ env.WORK_DIR }} && cp Pipfile.lock ${{ env.WORK_DIR }}
+          pipenv sync
+        shell: bash
+
       - name: Staging Init
         id: staging
-        run: python ${{ env.WORK_DIR }}/scripts/staging.py
+        run: pipenv run python ${{ env.WORK_DIR }}/scripts/staging.py
         shell: bash
 
       - name: Terraform Init
