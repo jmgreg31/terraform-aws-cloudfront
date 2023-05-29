@@ -1,6 +1,7 @@
 import logging
 import os
 import re
+import traceback
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from pathlib import Path
@@ -116,5 +117,7 @@ class FileContext:
     def __enter__(self):
         os.chdir(self.path)
 
-    def __exit__(self):
+    def __exit__(self, exc_type, exc_value, tb):
+        if exc_type is not None:
+            LOG.info(traceback.format_exception(exc_type, exc_value, tb))
         os.chdir(self.origin)
