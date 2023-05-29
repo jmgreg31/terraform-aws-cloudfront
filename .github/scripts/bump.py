@@ -62,18 +62,17 @@ class BumpHandler(FileHandler):
         os.system('git config --global user.name "Jon Greg"')
         os.system("git config --global init.defaultBranch master")
         LOG.info("INIT")
-        os.system("git init")
+        os.system(f"cd {WORK_DIR} && git init")
         LOG.info("REMOTE")
         os.system(
             f"git remote add origin https://jmgreg31:{TOKEN}@github.com/{ORG}/{REPO}.git > /dev/null 2>&1"
         )
         # os.system("git checkout master")
         LOG.info("add")
-        os.system(f"git add -A")
-        # os.system(f"git add {WORK_DIR}/README.md")
-        # os.system(f"git add {WORK_DIR}/CHANGELOG.md")
-        # os.system(f"git add {WORK_DIR}/example/main.tf")
-        # os.system(f"git add {WORK_DIR}/example/terraform.tfvars")
+        os.system(f"git add {WORK_DIR}/README.md")
+        os.system(f"git add {WORK_DIR}/CHANGELOG.md")
+        os.system(f"git add {WORK_DIR}/example/main.tf")
+        os.system(f"git add {WORK_DIR}/example/terraform.tfvars")
         os.system(f'git commit -m "(ci): Bump Version to {self.version}"')
         if not self.dry_run:
             os.system("git push origin master")
