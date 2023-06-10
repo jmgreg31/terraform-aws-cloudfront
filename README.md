@@ -19,6 +19,12 @@ This is a module to build a cloudfront distribution.  It has been modularized to
 
 See [CHANGELOG](CHANGELOG.md) for release notes
 
+**IMPORTANT:** To migrate from version `v4.x.x` to `v5.x.x` update the module source to the specific cloudfront folder.
+
+```hcl
+source = "git::https://github.com/jmgreg31/terraform-aws-cloudfront//cloudfront?ref=v5.0.0"
+```
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |

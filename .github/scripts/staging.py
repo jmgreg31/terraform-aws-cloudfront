@@ -1,22 +1,25 @@
+# pylint: disable = wrong-import-position
 import os
+import sys
 
-from helpers import FileHandler, FileObject, UpdateFile
-from logger import CustomLogger
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(SCRIPT_DIR))
+
+from scripts.helpers import FileHandler, FileObject, UpdateFile
+from scripts.logger import CustomLogger
 
 LOG = CustomLogger("staging")
-
-WORK_DIR = os.getenv("WORK_DIR")
 
 
 class UpdateExampleTerraform(UpdateFile):
     def get_path(self) -> str:
-        return f"{WORK_DIR}/example/main.tf"
+        return "example/main.tf"
 
     def get_search(self) -> str:
         return r"source[ \t]+\=.*"
 
     def get_sub(self) -> str:
-        return 'source = "../"'
+        return 'source = "../cloudfront/"'
 
 
 class StagingHandler(FileHandler):

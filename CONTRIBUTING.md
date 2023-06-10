@@ -9,9 +9,9 @@ This repo leverages GitHub Actions to help facilitate CICD workflows.  In the co
 - Update the [VERSION](https://github.com/jmgreg31/terraform-aws-cloudfront/blob/master/VERSION) numbers to the new version that this Pull Request would represent. The versioning scheme used is [SemVer](http://semver.org/).
 - Update `CHANGELOG.md` with the details of the change.  Please follow the format below:
 
-    ```sh
-    ## UNRELEASED (<MONTH><YEAR>)
-    ```
+  ```sh
+  ## UNRELEASED (<MONTH><YEAR>)
+  ```
 
 - If applicable, Apply updates to `/example/*` files to test the proposed feature/fix.
 - If applicable, Update `README.md` documentation with any applicable changes.
