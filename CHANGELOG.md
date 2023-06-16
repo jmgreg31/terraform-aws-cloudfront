@@ -1,6 +1,6 @@
 <!-- markdownlint-disable MD041 -->
 <!-- markdownlint-disable MD002 -->
-## UNRELEASED (June 2023)
+## v5.0.0 (June 2023)
 
 * Add repo best practices
 * Structure terraform files in separate folder
