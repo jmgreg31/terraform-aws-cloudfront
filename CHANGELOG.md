@@ -1,4 +1,13 @@
 <!-- markdownlint-disable MD041 -->
+<!-- markdownlint-disable MD002 -->
+## UNRELEASED (June 2023)
+
+* Add repo best practices
+* Structure terraform files in separate folder
+* Add script test cases
+* Add repo controls into workflows
+* Bump major version due to module reference
+
 ## v4.3.9 (May 2023)
 
 * Refactor GitHub Actions and script structure
@@ -17,7 +26,7 @@
 ## v4.3.6 (February 2023)
 
 * Update `default_cache_behavior` and `dynamic_ordered_cache_behavior` with ability to accept `response_headers_policy_id`(UUID) parameter.
-  
+
 * Move from Travis CI to GitHub Actions
 
 ## v4.3.5 (June 2021)

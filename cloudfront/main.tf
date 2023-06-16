@@ -114,8 +114,8 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
       compress               = lookup(j.value, "compress", null)
       viewer_protocol_policy = j.value.viewer_protocol_policy
 
-      cache_policy_id          = lookup(j.value, "cache_policy_id", null)
-      origin_request_policy_id = lookup(j.value, "origin_request_policy_id", null)
+      cache_policy_id            = lookup(j.value, "cache_policy_id", null)
+      origin_request_policy_id   = lookup(j.value, "origin_request_policy_id", null)
       response_headers_policy_id = lookup(j.value, "response_headers_policy_id", null)
 
       min_ttl     = lookup(j.value, "min_ttl", null)
@@ -149,7 +149,7 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
         for_each = lookup(j.value, "function_association", [])
         content {
           event_type   = cffunction.value.event_type
-          function_arn   = cffunction.value.function_arn
+          function_arn = cffunction.value.function_arn
         }
       }
     }
@@ -166,8 +166,8 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
       compress               = lookup(j.value, "compress", null)
       viewer_protocol_policy = j.value.viewer_protocol_policy
 
-      cache_policy_id          = lookup(j.value, "cache_policy_id", null)
-      origin_request_policy_id = lookup(j.value, "origin_request_policy_id", null)
+      cache_policy_id            = lookup(j.value, "cache_policy_id", null)
+      origin_request_policy_id   = lookup(j.value, "origin_request_policy_id", null)
       response_headers_policy_id = lookup(j.value, "response_headers_policy_id", null)
 
       min_ttl     = lookup(j.value, "min_ttl", null)
@@ -201,7 +201,7 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
         for_each = lookup(j.value, "function_association", [])
         content {
           event_type   = cffunction.value.event_type
-          function_arn   = cffunction.value.function_arn
+          function_arn = cffunction.value.function_arn
         }
       }
 

@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = 'https://pypi.python.org/simple'
+verify_ssl = true
+
+[requires]
+python_version = "3.9"
+
+[packages]
+requests = "*"
+coloredlogs = "*"
+
+[dev-packages]
+autoflake = "*"
+black = "==22.3.0"
+pdoc = "*"
+pylint = "*"
+pre-commit = "*"
+pytest = "*"
+yamllint = "*"
+pytest-cov = "*"
