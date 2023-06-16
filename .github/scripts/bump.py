@@ -69,7 +69,9 @@ class BumpHandler(FileHandler):
             os.system("git add CHANGELOG.md")
             os.system("git add example/main.tf")
             os.system("git add example/terraform.tfvars")
-            os.system(f'git commit -m "(ci): Bump Version to {self.version}"')
+            os.system(
+                f'git commit -m "(ci): [norelease] Bump Version to {self.version}"'
+            )
             if not self.dry_run:
                 os.system("git push origin master")
             else:
