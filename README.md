@@ -1,7 +1,7 @@
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD041 -->
 ![Build Status](https://github.com/jmgreg31/terraform-aws-cloudfront/actions/workflows/bump.yml/badge.svg?event=push)
-[![Latest Release](https://img.shields.io/badge/release-v5.0.0-blue.svg)](https://github.com/jmgreg31/terraform-aws-cloudfront/releases/tag/v5.0.0)
+[![Latest Release](https://img.shields.io/badge/release-v5.0.1-blue.svg)](https://github.com/jmgreg31/terraform-aws-cloudfront/releases/tag/v5.0.1)
 
 # Terraform Cloudfront Module
 
@@ -22,7 +22,7 @@ See [CHANGELOG](CHANGELOG.md) for release notes
 **IMPORTANT:** To migrate from version `v4.x.x` to `v5.x.x` update the module source to the specific cloudfront folder.
 
 ```hcl
-source = "git::https://github.com/jmgreg31/terraform-aws-cloudfront//cloudfront?ref=v5.0.0"
+source = "git::https://github.com/jmgreg31/terraform-aws-cloudfront//cloudfront?ref=v5.0.1"
 ```
 
 ## Inputs

@@ -1,6 +1,6 @@
 <!-- markdownlint-disable MD041 -->
 <!-- markdownlint-disable MD002 -->
-## UNRELEASED (August 2023)
+## v5.0.1 (August 2023)
 
 * Update python dependencies
 
